@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MME_v1.3.2.1+v1.3.3.0_开发个人总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于网络请求在开发v1.3.2.1版本时，新增了这样一个需求：在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示。具体分到给我的任务是：如果有新图片需要下载的时候，下载下来保存到本地。由于我们的项目网络请求时采用async-http-client开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MME_v1.3.2.1+v1.3.3.0_开发个人总结">
+<meta property="og:url" content="http://yoursite.com/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="关于网络请求在开发v1.3.2.1版本时，新增了这样一个需求：在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示。具体分到给我的任务是：如果有新图片需要下载的时候，下载下来保存到本地。由于我们的项目网络请求时采用async-http-client开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校">
+<meta property="og:updated_time" content="2016-12-22T07:08:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MME_v1.3.2.1+v1.3.3.0_开发个人总结">
+<meta name="twitter:description" content="关于网络请求在开发v1.3.2.1版本时，新增了这样一个需求：在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示。具体分到给我的任务是：如果有新图片需要下载的时候，下载下来保存到本地。由于我们的项目网络请求时采用async-http-client开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MME_v1.3.2.1+v1.3.3.0_开发个人总结
+    </h1>
+  
+
+        <a href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-10-26T06:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于网络请求"><a href="#关于网络请求" class="headerlink" title="关于网络请求"></a>关于网络请求</h2><p>在开发v1.3.2.1版本时，新增了这样一个需求：<code>在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示</code>。具体分到给我的任务是：<code>如果有新图片需要下载的时候，下载下来保存到本地</code>。由于我们的项目网络请求时采用<code>async-http-client</code>开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校验这一步骤，不过由于此前版本做图片上传功能时已经做过类似的签名校验，这一部分也没有耽误什么时间。准备工作都做完之后，测试的时候，发现发起请求成功，服务端也有数据返回（这里使用Charles这个神器来进行数据抓包的），但是程序就是没法解析出数据。</p>
+<a id="more"></a>
+<p>下面写出来的是我思考和解决问题的步骤（最终感谢同事的指点）：</p>
+<ol>
+<li><p>重写<code>async-http-client</code>中<code>response handler</code>的生命周期方法，目的是看在生命周期的哪个方法里出现问题（因为有数据返回，但是没有接收到，说明是在<code>response handler</code>处理的过程中出现的问题）：</p>
+<ul>
+<li><code>onStart</code></li>
+<li><code>onSuccess</code></li>
+<li><code>onFailure</code></li>
+<li><code>onFinish</code></li>
+</ul>
+</li>
+<li><p>打出Log发现，<code>response handler</code>里的<code>onFailure</code>方法执行了，并且<code>statusCode</code>是<code>444</code></p>
+</li>
+<li>正在我疑惑的时候，去问了后端的同事，他说我这边是不会返回<code>444</code>这个码的，那这个码到底时哪里来的呢？他突然说到之前做过<code>服务端返回数据后，再进行一次签名校验的功能</code>，是不是那里的问题，一打断点，发现还真是这个问题：因为使用了自己封装过的<code>response handler</code>，在服务端返回数据后，又进行了一次签名校验，如果校验不通过，则直接调用<code>onFailure</code>并且返回<code>444</code>状态码</li>
+<li>采用<code>async-http-client</code>自带的<code>JsonHttpResponseHandler</code>作为<code>response handler</code>来对返回的json数据进行解析，问题解决</li>
+</ol>
+<p>在解决这个问题的过程中，有以下几个关键节点（按开发步骤来）：</p>
+<ol>
+<li>发起的网络请求需不需要<code>签名校验</code></li>
+<li>发起的请求服务端有没有接收到</li>
+<li>服务端有没有数据返回</li>
+<li>客户端接收数据时需不需要<code>签名校验</code></li>
+<li><code>async-http-client</code>的<code>response handler</code>有4个生命周期，可以用来判断接收的时候在哪里出现问题</li>
+<li><code>async-http-client</code>的设置是:<code>statusCode</code>大于<code>300</code>时，直接报错(执行<code>onFailure</code>方法)</li>
+</ol>
+<h2 id="关于动画"><a href="#关于动画" class="headerlink" title="关于动画"></a>关于动画</h2><h3 id="自定义propertyName"><a href="#自定义propertyName" class="headerlink" title="自定义propertyName"></a>自定义propertyName</h3><p>在<code>拍照完的照片预览页</code>中有这样一句代码<code>ObjectAnimator.ofFloat(mAnimatingImageView, &quot;animationProgress&quot;, 0.0f, 1.0f)</code>，这里的<code>propertyName</code>是<code>animationProgress</code>，不是一般的<code>alpha</code>、<code>rotation</code>等，在查看了<a href="http://developer.android.com/guide/topics/graphics/prop-animation.html#views" target="_blank" rel="external">Android文档后(Animating with ObjectAnimator部分)</a>，发现如果要自定义<code>propertyName</code>，则类里必须要有<code>set</code>和<code>get</code>方法，在这句代码里对应的就是<code>setAnimationProgress</code>和<code>getAnimationProgress</code>方法。</p>
+<h3 id="透明度、缩放动画后"><a href="#透明度、缩放动画后" class="headerlink" title="透明度、缩放动画后"></a>透明度、缩放动画后</h3><p>如果进行了<code>透明度</code>、<code>缩放</code>等动画后，没有相反的动画过程，下次再查看相关控件时，会呈现动画结束时的状态，此时如果<code>alpha</code>值是<code>0</code>，虽然控件设置了<code>View.VISIBLE</code>，但还是不可见的，要重新设置<code>alpha</code>值为1.0f。在v1.3.3.0开发过程中，相机页面显示照片数量的角标动画就是一个例子，进入预览页前有一个<code>exit</code>，最后的情况是让该控件<code>alpha</code>值为<code>0</code>，如果此时删除完全部照片，则回到相机页面时不会进入<code>enter</code>动画，这时会导致显示照片数量这个控件不可见，需要设置<code>setAlpha(1.0f)</code>、<code>setScaleX(1.0f)</code>、<code>setScaleY(1.0f)</code>让其正常显示。</p>
+<h3 id="View初始状态是“gone”"><a href="#View初始状态是“gone”" class="headerlink" title="View初始状态是“gone”"></a>View初始状态是“gone”</h3><p>如果一个view的初始状态是<code>gone</code>，执行<code>view.animate().alpha(1.0f).scaleX(1.0f).scaleY(1.0f).setDuration(200)</code>，发现动画不会出现，要使用<code>view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.xxx))</code>动画才会有效果，具体原因还不清楚，等以后搞清楚了再回头来看。</p>
+<h2 id="是否一个Activity不可见了就一定会调用onStop？"><a href="#是否一个Activity不可见了就一定会调用onStop？" class="headerlink" title="是否一个Activity不可见了就一定会调用onStop？"></a>是否一个Activity不可见了就一定会调用onStop？</h2><p>在刚开始接触Android开发时，对于一个Activity的<code>onPause</code>和<code>onStop</code>方法什么时候调用，有以下两个认知：</p>
+<ul>
+<li>当前Activity部分不可见时，<code>onPause</code>会调用，例如一个dialog弹出</li>
+<li>当前Activity完全不可见时，<code>onPause</code>和<code>onStop</code>会分别调用，例如一个Activity跳转到下一个Activity的场景</li>
+</ul>
+<p>在v1.3.2.1版本开发过程中，遇到一个情况，推倒了之前的认知，<code>当Acitivity完全不可见时，onStop不一定调用</code>，这个例外就是：<code>如果跳转过去的Activity主题属性是透明(WindowIsTranslucent=true)</code>，则系统会认为一个类似于dialog的控件附在跳转之前的Activity上，此时虽然前一个Activity不可见了，但只会调用<code>onPause</code>，而不会调用<code>onStop</code>。</p>
+<h2 id="照片Exif信息丢失"><a href="#照片Exif信息丢失" class="headerlink" title="照片Exif信息丢失"></a>照片Exif信息丢失</h2><p>在对拍照后的图片进行<code>压缩保存</code>时，发现保存后图片的Exif信息丢失，这样就会导致在有些机型上，拍照的图片被翻转了，这时候就算读取Exif信息也没用，因为<code>翻转角度信息</code>已经损坏。对于这种情况，有以下两个解决方案：</p>
+<ol>
+<li>图片不压缩进行保存</li>
+<li>如果图片一定要进行压缩保存，则在写入文件之前，读取Exif信息，如果有翻转角度信息的，对bitmap翻转之后再进行保存</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/11/17/20151117-v1.3.4.0-dev-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MME_v1.3.4.0_开发个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MME_v1.3.1+v1.3.2_开发个人总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

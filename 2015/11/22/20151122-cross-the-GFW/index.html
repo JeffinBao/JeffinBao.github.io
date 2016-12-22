@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>爬墙思路总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对MAC OS，并且需要一定的Linux操作指令基础，因为像cd、ls等指令都是基础的Linux指令，在操作过程中都需要用到。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬墙思路总结">
+<meta property="og:url" content="http://yoursite.com/2015/11/22/20151122-cross-the-GFW/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="前言首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对MAC OS，并且需要一定的Linux操作指令基础，因为像cd、ls等指令都是基础的Linux指令，在操作过程中都需要用到。">
+<meta property="og:updated_time" content="2016-12-22T07:09:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬墙思路总结">
+<meta name="twitter:description" content="前言首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对MAC OS，并且需要一定的Linux操作指令基础，因为像cd、ls等指令都是基础的Linux指令，在操作过程中都需要用到。">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20151122-cross-the-GFW" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      爬墙思路总结
+    </h1>
+  
+
+        <a href="/2015/11/22/20151122-cross-the-GFW/" class="archive-article-date">
+  	<time datetime="2015-11-22T07:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对<strong><code>MAC OS</code></strong>，并且需要一定的Linux操作指令基础，因为像<code>cd</code>、<code>ls</code>等指令都是基础的Linux指令，在操作过程中都需要用到。</p>
+<a id="more"></a>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-拥有一个VPS"><a href="#第一步-拥有一个VPS" class="headerlink" title="第一步:拥有一个VPS"></a>第一步:拥有一个VPS</h3><h4 id="VPS介绍"><a href="#VPS介绍" class="headerlink" title="VPS介绍"></a>VPS介绍</h4><p>VPS是什么？简单来说就是一个远程电脑，你可以通过配置它，实现爬墙的目的。当你在爬墙的时候，这个VPS就是一个中间桥梁的角色，所有你的网络请求，先发向VPS，VPS得到请求后，进行转发，去访问你想要的网络地址；网络上返回的数据也是通过VPS，然后再返回到你的本地电脑上。</p>
+<h4 id="如何拥有VPS"><a href="#如何拥有VPS" class="headerlink" title="如何拥有VPS"></a>如何拥有VPS</h4><p>目前市面上有很多VPS提供商，下面列举几个著名的（我自己没有在用这几个，下面的评价都是网上的信息），至于选择哪个，完全由你决定：</p>
+<ul>
+<li><code>Linode</code>:这个特点就是贵，但是服务也稳定，具体价格搜下它的网站就知道了</li>
+<li><code>Digital Ocean</code>:比Linode便宜，但是服务也比较稳定</li>
+<li><code>Bandwagon</code>:在这三个中最便宜，价格亲民，适合新手</li>
+<li><code>Vultr</code>:这个网上有个很详细的教程，这里也贴出来<a href="http://blog.tianya.cn/blog-7097285-1.shtml" target="_blank" rel="external">Vultr教程</a></li>
+<li>其它其实还有很多，我自己是跟同学合用一个，当时是同学买的，所以没有操心VPS这部分，哈哈哈</li>
+</ul>
+<h3 id="第二步-本地生成ssh公私钥"><a href="#第二步-本地生成ssh公私钥" class="headerlink" title="第二步:本地生成ssh公私钥"></a>第二步:本地生成ssh公私钥</h3><h4 id="SSH是什么？"><a href="#SSH是什么？" class="headerlink" title="SSH是什么？"></a>SSH是什么？</h4><p>SSH可以看做是给你的所有网络请求加了一个安全外壳，这样你的所有爬墙访问就不容易被人家破解，毕竟爬墙在sky朝是不被允许的。</p>
+<h4 id="如何获取ssh公私钥"><a href="#如何获取ssh公私钥" class="headerlink" title="如何获取ssh公私钥"></a>如何获取ssh公私钥</h4><p>首先Spotlight里搜索<code>terminal</code>，回车打开terminal，在terminal里输入下面指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
+<p>输入指令后会有两种情况:</p>
+<ul>
+<li>没有任何提示，则说明ssh公私钥已经存在，此时再输入下面指令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls</div></pre></td></tr></table></figure>
+<p>这时候看有没有<code>.pub</code>结尾的文件，如果有，执行下面指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>如果<code>.pub</code>前面的名字不是<code>id_rsa</code>，则换成你看到的名字。<br><code>执行上面指令后，会出现你的公钥，此时复制公钥信息，备用。</code></p>
+<ul>
+<li>如果terminal里面出现包含<code>No such file or directory</code>这句话的提示，说明你还没有创建过ssh公私钥，此时在terminal里面输入下面指令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen</div></pre></td></tr></table></figure>
+<p>有任何提示，一路回车即可，注意看，如果要填写邮箱，可以填上自己的邮箱。不出意外，ssh key已经生成，下面的步骤就跟上面有<code>.pub</code>文件一样了，输入<code>cat ~/.ssh/id_rsa.pub</code>，获得公钥信息，复制备用。</p>
+<h3 id="第三步-登陆VPS，将ssh公钥放到VPS上"><a href="#第三步-登陆VPS，将ssh公钥放到VPS上" class="headerlink" title="第三步:登陆VPS，将ssh公钥放到VPS上"></a>第三步:登陆VPS，将ssh公钥放到VPS上</h3><p>第一步买来的VPS，这时候第一次派上用场了，在买完VPS后，厂商会提供初始登陆的用户名，密码和你的VPS对应的IP地址（有些云服务提供商的VPS服务需要自己开通，比如vultr），这时候还是在terminal里面，输入下面指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username:password@ip</div></pre></td></tr></table></figure>
+<p><code>username</code>表示你的用户名，<code>password</code>表示你的初始登陆密码，<code>ip</code>表示你的VPS对应的IP地址，指令输完后，按回车，应该是让你再输入一遍初始密码，此时再输入一遍，回车一下，就远程登陆上你的VPS主机了。<code>PS:可能不同VPS提供商的登陆方式有点不同，具体还请看提供商给出的登陆示例</code></p>
+<p>然后第一次登陆，要创建<code>.ssh</code>文件夹，输入以下指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir .ssh</div></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi authorized_keys</div></pre></td></tr></table></figure>
+<p>创建放置ssh公钥的文件，进入之后，输入<code>i</code>，进入编辑模式，此时输入<code>ssh-rsa</code>+<code>刚才复制的ssh公钥</code>+<code>#</code>，再点击<code>esc</code>退出编辑模式，接着输入<code>:wq</code>对文件进行保存并退出。<br>通过这些步骤之后，公钥已经成功放到VPS上了</p>
+<h3 id="第四步-本地配置config文件"><a href="#第四步-本地配置config文件" class="headerlink" title="第四步:本地配置config文件"></a>第四步:本地配置config文件</h3><h4 id="config文件的作用"><a href="#config文件的作用" class="headerlink" title="config文件的作用"></a>config文件的作用</h4><p>本地配置好config文件以后，就可以结合刚才VPS上的公钥，通过ssh方式登陆远程VPS了。</p>
+<h4 id="如何配置"><a href="#如何配置" class="headerlink" title="如何配置"></a>如何配置</h4><p>输入以下指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
+<p>由于刚才已经创建过ssh公钥了，所以这时候输入上面指令，肯定能进入隐藏的ssh文件夹。再输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls</div></pre></td></tr></table></figure>
+<p>看有没有<code>config</code>文件，如果没有，则用以下指令创建:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch config</div></pre></td></tr></table></figure>
+<p>此时再输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span></div></pre></td></tr></table></figure>
+<p>会得到当前目录的路径，复制，打开finder，点击<code>前往-前往文件夹(Go-Go to Folder)</code>，粘帖刚才复制的路径，回车，看到config文件，右击，使用文本文档打开，输入以下内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Host xxx(随便取个名字，英文最好)</div><div class="line">User root</div><div class="line">Port 22</div><div class="line">Hostname 102.102.102.102（改成你VPS的IP）</div><div class="line">IdentityFile ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<p>进行保存后，然后再回到terminal里面，输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh xxx(刚才config文件里面的Host后面的内容)</div></pre></td></tr></table></figure>
+<p>正常来说，这时候你就可以用ssh方式远程登陆你的VPS主机了。</p>
+<h3 id="第五步-VPS上配置shadowsocks"><a href="#第五步-VPS上配置shadowsocks" class="headerlink" title="第五步:VPS上配置shadowsocks"></a>第五步:VPS上配置shadowsocks</h3><p>其实这一步才是真正的开始爬墙的配置，前面的全都是铺垫，但是为了更安全爬，前面的步骤也是需要的。这一步的核心内容，网上有个很不错的教程，我基本上就是按照<a href="https://www.textarea.com/ExpectoPatronum/kexue-shangwang-yong-vps-dajian-shadowsocks-fuwuqi-265/" target="_blank" rel="external">这个链接里的教程来进行的</a>，在此感谢原作者。</p>
+<h4 id="VPS安装shadowsocks"><a href="#VPS安装shadowsocks" class="headerlink" title="VPS安装shadowsocks"></a>VPS安装shadowsocks</h4><p>刚才已经用ssh方式远程登陆VPS了，如果没有，还是用<code>ssh xxx</code>方式进行登陆。然后执行下面指令:</p>
+<h5 id="Debian-Ubuntu系统"><a href="#Debian-Ubuntu系统" class="headerlink" title="Debian/Ubuntu系统"></a>Debian/Ubuntu系统</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;&amp; easy_install pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<p>这样shadowsocks就安装好了。</p>
+<h4 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h4><p>这个配置文件包含下面一些信息:VPS地址，端口，代理端口，登陆密码等，使用下面指令创建一个<code>json</code>配置文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<p>点击<code>i</code>进入编辑模式，然后输入下面内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123; </div><div class="line">   <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>, </div><div class="line">   <span class="string">"server_port"</span>:25, </div><div class="line">   <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, </div><div class="line">   <span class="string">"local_port"</span>:1080, </div><div class="line">   <span class="string">"password"</span>:<span class="string">"mypassword"</span>,</div><div class="line">    <span class="string">"timeout"</span>:300, </div><div class="line">   <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>, </div><div class="line">   <span class="string">"fast_open"</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面内容注意以下几点:</p>
+<ul>
+<li><code>server</code>后面跟的是你VPS地址</li>
+<li><code>server_port</code>后面是端口，你可以配置多个端口，每个端口配置不一样的密码，这样就可以给多个人使用了</li>
+<li><code>method</code>后面是加密方式，在配置客户端的时候会用到</li>
+<li><code>password</code>后面是你的密码，配置客户端的时候会用到</li>
+<li>如果要给多个人使用，则配置文件内容应该是下面的格式:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> 1 &#123;                                                                           </div><div class="line"> 2    <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>,</div><div class="line"> 3    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line"> 4    <span class="string">"local_port"</span>:1080,</div><div class="line"> 5     <span class="string">"timeout"</span>:300,</div><div class="line"> 6    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</div><div class="line"> 7    <span class="string">"fast_open"</span>: <span class="literal">false</span>,</div><div class="line"> 8    <span class="string">"port_password"</span>:</div><div class="line"> 9    &#123;</div><div class="line">10        <span class="string">"24"</span>:<span class="string">"xxx"</span>,</div><div class="line">11        <span class="string">"8084"</span>:<span class="string">"xxx"</span>,</div><div class="line">12        <span class="string">"8086"</span>:<span class="string">"xxx"</span></div><div class="line">13    &#125;</div><div class="line">14 &#125;</div></pre></td></tr></table></figure>
+<p>里面的<code>24</code>、<code>8084</code>就是端口，后面是对应的密码。然后<code>:wq</code>进行保存退出。</p>
+<h4 id="启动shadowsocks"><a href="#启动shadowsocks" class="headerlink" title="启动shadowsocks"></a>启动shadowsocks</h4><p>配置文件写好后，输入以下指令启动shadowsocks服务器:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json <span class="_">-d</span> start</div></pre></td></tr></table></figure>
+<p>后台停止shadowsocks指令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json <span class="_">-d</span> stop</div></pre></td></tr></table></figure>
+<p>以便某天可以关闭这个服务。</p>
+<h3 id="第六步-MAC上以及手机上安装shadowsocks客户端并配置"><a href="#第六步-MAC上以及手机上安装shadowsocks客户端并配置" class="headerlink" title="第六步:MAC上以及手机上安装shadowsocks客户端并配置"></a>第六步:MAC上以及手机上安装shadowsocks客户端并配置</h3><h4 id="MAC上shadowsocks客户端配置"><a href="#MAC上shadowsocks客户端配置" class="headerlink" title="MAC上shadowsocks客户端配置"></a>MAC上shadowsocks客户端配置</h4><p>需要写入<code>ip</code>+<code>远程端口</code>；加密方式选择刚才配置文件中<code>method</code>后面的加密方法，这里是<code>aes-256-cfb</code>；密码就输入刚才配置文件里面<code>password</code>后面的内容。</p>
+<h4 id="Android上shadowsocks客户端配置"><a href="#Android上shadowsocks客户端配置" class="headerlink" title="Android上shadowsocks客户端配置"></a>Android上shadowsocks客户端配置</h4><p>跟MAC上配置基本差不多，把<code>ip</code>、<code>端口</code>、<code>密码</code>和<code>加密方法</code>填入，然后打开，就可以进行全局爬墙啦。</p>
+<h4 id="iOS客户端"><a href="#iOS客户端" class="headerlink" title="iOS客户端"></a>iOS客户端</h4><p>由于iOS系统限制很多，即使配置好shadowsocks客户端，也只能网页爬墙，而不能全局爬墙。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技能/">实用技能</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/11/22/20151122-cross-the-GFW/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/11/24/20151124-drag-select-image-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          仿Smartisan OS图库快速选择功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/17/20151117-v1.3.4.0-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MME_v1.3.4.0_开发个人总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

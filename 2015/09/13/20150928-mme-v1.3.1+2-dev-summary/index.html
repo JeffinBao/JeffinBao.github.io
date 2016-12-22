@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MME_v1.3.1+v1.3.2_开发个人总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android5.0相关点按水波纹效果的属性设置Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：
+
+水波纹效果会超过控件的边界：android:background=&amp;quot;?android:attr/selectableIt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MME_v1.3.1+v1.3.2_开发个人总结">
+<meta property="og:url" content="http://yoursite.com/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="Android5.0相关点按水波纹效果的属性设置Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：
+
+水波纹效果会超过控件的边界：android:background=&amp;quot;?android:attr/selectableIt">
+<meta property="og:updated_time" content="2016-12-22T07:08:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MME_v1.3.1+v1.3.2_开发个人总结">
+<meta name="twitter:description" content="Android5.0相关点按水波纹效果的属性设置Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：
+
+水波纹效果会超过控件的边界：android:background=&amp;quot;?android:attr/selectableIt">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20150928-mme-v1.3.1+2-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MME_v1.3.1+v1.3.2_开发个人总结
+    </h1>
+  
+
+        <a href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-09-13T05:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android5-0相关"><a href="#Android5-0相关" class="headerlink" title="Android5.0相关"></a>Android5.0相关</h2><h3 id="点按水波纹效果的属性设置"><a href="#点按水波纹效果的属性设置" class="headerlink" title="点按水波纹效果的属性设置"></a>点按水波纹效果的属性设置</h3><p>Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：</p>
+<ul>
+<li>水波纹效果会超过控件的边界：<strong><code>android:background=&quot;?android:attr/selectableItemBackgroundBorderless&quot;</code></strong></li>
+<li>水波纹效果在控件边界里面：<strong><code>android:background=&quot;?android:attr/selectableItemBackground&quot;</code></strong></li>
+</ul>
+<p>如果直接使用第一种，在5.0以上的系统可以运行，但是5.0以下系统因为没有这个属性，所以程序会出现崩溃，刚开始的解决方案是新建<strong><code>values-v21</code></strong>的资源文件夹，在里面的<strong><code>styles</code></strong>用第一种属性；在<strong><code>values</code></strong>里的<strong><code>styles</code></strong>用第二种属性，这样就可以解决兼容的问题。<br>后来发现一种不用设置两种属性的方式，直接在属性里面设置<strong><code>android:background=&quot;?attr/selectableItemBackgroundBorderless</code></strong>，这句代码的意思是：<strong>如果控件背景属性支持Borderless的，就用Borderless，如果没有，则自动进行兼容</strong>。</p>
+<a id="more"></a>
+<h3 id="Snackbar出现时控件上移效果"><a href="#Snackbar出现时控件上移效果" class="headerlink" title="Snackbar出现时控件上移效果"></a>Snackbar出现时控件上移效果</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>在研究了<a href="https://github.com/lguipeng/Notes" target="_blank" rel="external">极简笔记</a><strong><code>Snackbar</code></strong>相关的代码后，发现<strong><code>CoordinatorLayout+FloatingActionButton+Snackbar</code></strong>三个在一起，可以达到<strong>Snackbar出现时FloatingActionButton上移，Snackbar消失后FloatingActionButton下移回到原位置</strong>的效果，这个效果依赖于5.0系统在源码上实现了FloatingActionButton对Snackbar的状态的监听。而对于我们自己定义的控件，则需要自己去实现这个监听。</p>
+<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>重写<strong><code>Snackbar</code></strong>类，主体保持与系统源码相同，只增加一个静态抽象类<strong><code>Callback</code></strong>，并且在Snackbar出现后以及消失后实现该抽象类的两个方法：</p>
+<ul>
+<li><strong><code>onShown</code></strong></li>
+<li><strong><code>onDismissed</code></strong><br>然后在创建Snackbar的时候，加入<strong><code>setCallback(Snackbar.Callback callback)</code></strong>方法，并在<strong><code>onShown()</code></strong>和<strong><code>onDismissed()</code></strong>里实现具体的逻辑。<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Snackbar.make(photoViewerActions, R.string.hint_import_success, Snackbar.LENGTH_SHORT)</div><div class="line">                    .setCallback(new Snackbar.<span class="function"><span class="title">Callback</span></span>() &#123;</div><div class="line">                        </div><div class="line">                        @Override</div><div class="line">                        public void onDismissed(Snackbar snackbar, int event) &#123;</div><div class="line">                            super.onDismissed(snackbar, event);</div><div class="line">                            ObjectAnimator.ofFloat(photoViewerActions, <span class="string">"translationY"</span>, 0).setDuration(300).start();</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        @Override</div><div class="line">                        public void onShown(Snackbar snackbar) &#123;</div><div class="line">                            super.onShown(snackbar);</div><div class="line">                            ObjectAnimator.ofFloat(photoViewerActions, <span class="string">"translationY"</span>, -(<span class="built_in">float</span>)snackbar.getView().getHeight()).setDuration(300).start();</div><div class="line">                        &#125;</div><div class="line">                    &#125;).show();</div></pre></td></tr></table></figure>
+<h3 id="定制Snackbar"><a href="#定制Snackbar" class="headerlink" title="定制Snackbar"></a>定制Snackbar</h3><p>除了上面一条<strong><code>Snackbar出现控件上移</code></strong>，Snackbar在UI上也可以进行定制，定制是在<strong><code>SnackbarLayout</code></strong>这个内部类里实现，并且Snackbar的布局文件也有两个，一个是没有<strong><code>撤销</code></strong>键时的样式，另一个是有<strong><code>撤销</code></strong>键时的样式，原生组件这两个布局文件名字分别是：</p>
+<ul>
+<li><code>layout_snackbar.xml</code>–无撤销键</li>
+<li><code>layout_snackbar_include.xml</code>–有撤销键</li>
+</ul>
+<h3 id="Toolbar使用方法"><a href="#Toolbar使用方法" class="headerlink" title="Toolbar使用方法"></a>Toolbar使用方法</h3><p><strong><code>Toolbar</code></strong>作为5.0以后出现的一个控件，支持很多自定义的效果，是<strong><code>ActionBar</code></strong>一个很好的代替，下面就来介绍下它的一般使用步骤：</p>
+<ul>
+<li>单独创建一个<strong>toolbar</strong>的<strong>layout</strong>，在需要使用的时候对其进行引用：<strong><code>&lt;include layout=&quot;@layout/toolbar&quot;/&gt;</code></strong>。在<strong>toolbar</strong>的<strong>layout</strong>里，可以设置它的一些属性</li>
+<li>在<strong>BaseActivity</strong>里，需要有方法可以判断是否需要<strong>toolbar</strong>这个控件，也需要有方法可以获取到<strong>toolbar</strong>，以便于在具体<strong>Activity</strong>里可以重新设置<strong>toolbar</strong>的样式：<strong>background</strong>、<strong>TitleTextColor</strong>等</li>
+<li>关于<strong>toolbar</strong>一些基本属性的介绍，可以参考：<a href="http://blog.csdn.net/lmj623565791/article/details/45303349" target="_blank" rel="external">Android 5.x Theme 与 ToolBar 实战</a></li>
+</ul>
+<h2 id="各种类和接口使用分析"><a href="#各种类和接口使用分析" class="headerlink" title="各种类和接口使用分析"></a>各种类和接口使用分析</h2><h3 id="Adapter加载机制"><a href="#Adapter加载机制" class="headerlink" title="Adapter加载机制"></a>Adapter加载机制</h3><h4 id="注意点一"><a href="#注意点一" class="headerlink" title="注意点一"></a>注意点一</h4><p>实例化结束后，会先执行<strong><code>getCount()</code></strong>方法，当<strong><code>getCount()</code></strong>方法返回的值不为<strong>0</strong>时，会继续执行<strong><code>getView()</code></strong>方法；若<strong><code>getCount()</code></strong>返回的值是<strong>0</strong>，则不会再继续执行<strong><code>getView()</code></strong>方法。</p>
+<h4 id="注意点二"><a href="#注意点二" class="headerlink" title="注意点二"></a>注意点二</h4><p>在V1.3.1版本以前，会出现点击选择图片闪烁的问题，刚开始都以为是Adapter的问题，在跟许可探讨了这个问题之后，发现可能是<strong><code>UniversalImageLoader</code></strong>这个第三方开源库自己的bug，因为许可之前在使用该开源库时也有过点按闪烁的问题。</p>
+<p>在之前解决该问题时，尝试过重新写了一个Adapter，也还是有闪烁问题，共同的一个现象就是，在点按选择照片出现闪烁的时候，<strong><code>getCount()</code></strong>和<strong><code>getView()</code></strong>方法都会明显比不闪烁的时候执行更多的次数，说明Adapter在重复进行刷新。</p>
+<h3 id="Handler采用弱引用方式（WeakReference）"><a href="#Handler采用弱引用方式（WeakReference）" class="headerlink" title="Handler采用弱引用方式（WeakReference）"></a>Handler采用弱引用方式（WeakReference）</h3><h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>简单来说，之前都是用内部类（包括匿名类）的方式创建<strong>Handler</strong>，用这种方式Handler会隐式地持有一个外部类对象（通常是Activity对象）。在系统进行耗时的网络请求时，Activity被关闭，但这时候<strong>线程</strong>会继续持有对Handler的引用，而Handler又会持有对Activity的引用，导致Activity无法被系统正常回收，造成内存泄漏，进而会导致OOM（内存溢出）。</p>
+<h4 id="方案-1"><a href="#方案-1" class="headerlink" title="方案"></a>方案</h4><p>采用静态类+弱引用的方式（因为静态类不再持有对外部类的引用，Activity被关闭时，系统可以正常收回；而对于Handler无法操作Activity中对象的问题，采用弱引用的方式解决，而弱引用不会影响系统对Activity的收回）</p>
+<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">private static class AppUpdaterHandler extends Handler &#123;</div><div class="line"></div><div class="line">        private final WeakReference&lt;SettingsActivity&gt; mActivityWeakReference;</div><div class="line"></div><div class="line">        //构造函数</div><div class="line">        public AppUpdaterHandler(SettingsActivity activity) &#123;</div><div class="line">            mActivityWeakReference = new WeakReference&lt;SettingsActivity&gt;(activity);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line"></div><div class="line">            //弱引用当前Activity</div><div class="line">            SettingsActivity activity = mActivityWeakReference.get();</div><div class="line">            <span class="keyword">if</span> (activity == null) &#123;</div><div class="line">                <span class="built_in">return</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            switch (msg.what) &#123;</div><div class="line">                <span class="keyword">case</span> ZConstants.ON_APPS_INFO: &#123;</div><div class="line">                    activity.onAppsInfo((JSONObject) msg.obj);</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">case</span> ZConstants.ON_ACTION: &#123;</div><div class="line">                    ToastUtil.showToast(activity, activity.getString(R.string.checking_new_version), Toast.LENGTH_SHORT);</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><strong>注意在Activity初始化时不要忘记实例化Handler对象</strong>，详细的解释请参考<a href="http://www.linuxidc.com/Linux/2013-12/94065.htm" target="_blank" rel="external">Android中使用Handler造成内存泄露的分析和解决</a></p>
+<h3 id="Fragment-FragmentPagerAdapter"><a href="#Fragment-FragmentPagerAdapter" class="headerlink" title="Fragment+FragmentPagerAdapter"></a>Fragment+FragmentPagerAdapter</h3><h4 id="两者之间如何通信"><a href="#两者之间如何通信" class="headerlink" title="两者之间如何通信"></a>两者之间如何通信</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public Fragment getItem(int arg0) &#123;</div><div class="line"></div><div class="line">    final Bundle bundle = new Bundle();</div><div class="line">    bundle.putInt(SplashFragment.EXTRA_POSITION, arg0 + 1);</div><div class="line"></div><div class="line">    final SplashFragment fragment = new SplashFragment();</div><div class="line">    fragment.setArguments(bundle);</div><div class="line">    <span class="built_in">return</span> fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<strong><code>FragmentPagerAdapter</code></strong>（或者它的子类）里重写<strong><code>getItem()</code></strong>方法，用<strong><code>Bundle</code></strong>类将当前的<strong><code>position</code></strong>存起来，再用<strong><code>fragment.setArguments(bundle)</code></strong>方法将当前位置信息传给fragment，在<strong><code>Fragment</code></strong>（或者它的子类）里，用<strong><code>getArguments()</code></strong>方法取得当前的位置，再将View与位置一一对应起来进行设置。</p>
+<h4 id="Fragment里的onCreateView与onViewCreated"><a href="#Fragment里的onCreateView与onViewCreated" class="headerlink" title="Fragment里的onCreateView与onViewCreated"></a>Fragment里的onCreateView与onViewCreated</h4><ul>
+<li><strong><code>onCreateView</code></strong>一般只用于<strong>LayoutInflater.inflate</strong>去初始化一个页</li>
+<li><strong><code>onViewCreated</code></strong>顾名思义是当View加载完成之后，马上执行，确定View里面具体放置一些什么控件</li>
+</ul>
+<h3 id="自定义WechatCallback接口"><a href="#自定义WechatCallback接口" class="headerlink" title="自定义WechatCallback接口"></a>自定义WechatCallback接口</h3><h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><p>微信分享接收回调是用了<strong><code>WXEntryActivity</code></strong>这个类，并给这个活动设置了<strong>透明主题</strong>。这个版本中引入了<strong>Snackbar</strong>，而<strong>Snackbar</strong>的绘制机制是会找一个父视图，如果没有这个父视图，则会创建不成功。所以在<strong>透明主题</strong>下，微信回调使用<strong>Snackbar</strong>出现不会显示的问题。</p>
+<h4 id="方案-2"><a href="#方案-2" class="headerlink" title="方案"></a>方案</h4><ul>
+<li>自定义一个WechatCallback接口，在<strong>WXEntryActivity</strong>里实现该接口对应的四个方法：<ul>
+<li><strong><code>void onShareSuccess(int statusCode, int result)</code></strong></li>
+<li><strong><code>void onShareCancel(int statusCode, int result)</code></strong></li>
+<li><strong><code>void onShareDenied(int statusCode, int result)</code></strong></li>
+<li><strong><code>void onShareDefaultStatus(int statusCode, int result)</code></strong></li>
+</ul>
+</li>
+<li>在目标页面<strong><code>setCallback</code></strong>，这个回调最终是用弱引用的方式获得</li>
+<li>在目标页面接收回调，并进行相应的处理</li>
+</ul>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="点击Flash展开的动画-直接代码设置"><a href="#点击Flash展开的动画-直接代码设置" class="headerlink" title="点击Flash展开的动画(直接代码设置)"></a>点击Flash展开的动画(直接代码设置)</h3><h4 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h4><ul>
+<li>点击<strong><code>Flash</code></strong>按钮展开选项，可以用<strong><code>setPivotX</code></strong>方法设置展开的位置</li>
+<li>点击<strong><code>Flash</code></strong>按钮关闭选项，这个时候<strong><code>Flash</code></strong>按键本身有一个旋转动画：<ul>
+<li>离<strong><code>Flash</code></strong>按钮近的转到远的，旋转角度是顺时针</li>
+<li>其它情况是逆时针</li>
+</ul>
+</li>
+</ul>
+<h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><h5 id="整个动画主代码"><a href="#整个动画主代码" class="headerlink" title="整个动画主代码"></a>整个动画主代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">private void playFlashOptionsAnimatorSet(final boolean isIn) &#123;</div><div class="line"></div><div class="line">    mFlashInAnimation = <span class="literal">true</span>;</div><div class="line">    ObjectAnimator flashSettingAnim = getFlashOptionsAnimator(isIn);</div><div class="line"></div><div class="line">    AnimatorSet animatorSet = new AnimatorSet();</div><div class="line">    <span class="keyword">if</span> (isIn) &#123;</div><div class="line">        //只进行展开动画</div><div class="line">        animatorSet.play(flashSettingAnim);</div><div class="line">        animatorSet.addListener(new <span class="function"><span class="title">AnimatorListenerAdapter</span></span>() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationEnd(Animator animation) &#123;</div><div class="line">                super.onAnimationEnd(animation);</div><div class="line">                mFlashInAnimation = <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ObjectAnimator flashAnim = getFlashChangeAnimator();</div><div class="line">        //展开动画和旋转动画一起执行</div><div class="line">        animatorSet.play(flashSettingAnim).with(flashAnim);</div><div class="line">        animatorSet.addListener(new <span class="function"><span class="title">AnimatorListenerAdapter</span></span>() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationEnd(Animator animation) &#123;</div><div class="line">                super.onAnimationEnd(animation);</div><div class="line">                mFlashInAnimation = <span class="literal">false</span>;</div><div class="line">                mFlashLastStatus = mFlashCurrentStatus;</div><div class="line">                mFlashSetting.setVisibility(View.INVISIBLE);</div><div class="line">                updateFlashIcon(mFlashCurrentStatus);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    animatorSet.setDuration(200);</div><div class="line">    animatorSet.start();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="展开关闭动画"><a href="#展开关闭动画" class="headerlink" title="展开关闭动画"></a>展开关闭动画</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> private ObjectAnimator getFlashOptionsAnimator(boolean isIn) &#123;</div><div class="line"> </div><div class="line">        ObjectAnimator scaleX;</div><div class="line">        <span class="keyword">if</span> (isIn) &#123;</div><div class="line">            mFlashSetting.setVisibility(View.VISIBLE);</div><div class="line">            scaleX = ObjectAnimator.ofFloat(mFlashSetting, <span class="string">"scaleX"</span>, 0.0f, 1.0f);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            scaleX = ObjectAnimator.ofFloat(mFlashSetting, <span class="string">"scaleX"</span>, 1.0f, 0.0f);</div><div class="line">        &#125;</div><div class="line">//设置展开的X轴位置        mFlashSetting.setPivotX(getResources().getDimensionPixelSize(R.dimen.camera_flash_anim_pivot_x));</div><div class="line">        <span class="built_in">return</span> scaleX;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="旋转动画"><a href="#旋转动画" class="headerlink" title="旋转动画"></a>旋转动画</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private ObjectAnimator <span class="function"><span class="title">getFlashChangeAnimator</span></span>() &#123;</div><div class="line">    </div><div class="line">        ObjectAnimator rotate = null;</div><div class="line">        <span class="keyword">if</span> (mFlashCurrentStatus &gt; mFlashLastStatus) &#123;</div><div class="line">           rotate = ObjectAnimator.ofFloat(mFlash, <span class="string">"rotation"</span>, 0f, 360f);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mFlashCurrentStatus &lt;= mFlashLastStatus) &#123;</div><div class="line">            rotate = ObjectAnimator.ofFloat(mFlash, <span class="string">"rotation"</span>, 360f, 0f);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">return</span> rotate;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="5-0系统以下点击按钮透明度变化（引入xml文件属性生成）"><a href="#5-0系统以下点击按钮透明度变化（引入xml文件属性生成）" class="headerlink" title="5.0系统以下点击按钮透明度变化（引入xml文件属性生成）"></a>5.0系统以下点击按钮透明度变化（引入xml文件属性生成）</h3><p>因为5.0以下系统不支持点击按钮水波纹效果，所以设计成按钮透明度变化来产生点按效果，与上面完全代码实现动画效果不同的是，在完成这个效果时，将属性写在了xml文件里。具体代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public static boolean onAlphaViewTouch(View v, MotionEvent event) &#123;</div><div class="line">   </div><div class="line">       <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">           <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       int action = event.getAction();</div><div class="line">       switch (action) &#123;</div><div class="line">           <span class="keyword">case</span> MotionEvent.ACTION_UP: &#123;</div><div class="line">               AnimatorSet <span class="built_in">set</span> = (AnimatorSet) AnimatorInflater.loadAnimator(v.getContext(),</div><div class="line">                       R.animator.view_alpha_out_animator);</div><div class="line">               set.setTarget(v);</div><div class="line">               set.start();</div><div class="line">           &#125;</div><div class="line">           <span class="built_in">break</span>;</div><div class="line"></div><div class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN: &#123;</div><div class="line">               AnimatorSet <span class="built_in">set</span> = (AnimatorSet) AnimatorInflater.loadAnimator(v.getContext(),</div><div class="line">                       R.animator.view_alpha_in_animator);</div><div class="line">               set.setTarget(v);</div><div class="line">               set.start();</div><div class="line">           &#125;</div><div class="line">           <span class="built_in">break</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>更多<strong><code>属性动画</code></strong>的介绍，可以参考：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/developer/2013/0312/1006.html" target="_blank" rel="external">Android属性动画–Property Animation（一）</a>和<a href="http://www.jcodecraeer.com/a/anzhuokaifa/developer/2013/0312/1007.html" target="_blank" rel="external">Android属性动画—Property Animation（二）</a></p>
+<h2 id="Bug分析思考与记录"><a href="#Bug分析思考与记录" class="headerlink" title="Bug分析思考与记录"></a>Bug分析思考与记录</h2><h3 id="Bug1-横向图片马赛克操作会报空指针"><a href="#Bug1-横向图片马赛克操作会报空指针" class="headerlink" title="Bug1:横向图片马赛克操作会报空指针"></a>Bug1:横向图片马赛克操作会报空指针</h3><h4 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h4><p>之前代码在<strong><code>onPathEvent</code></strong>方法中定义了马赛克操作不能超过图片尺寸的边界限制，所以对于横向图片，当手指从边界外划到边界里时，只能识别到<strong>ACTION_MOVE</strong>手势（前面由于在边界外，没有执行到<strong>ACTION_DOWN</strong>就返回了），这样也就只执行了<strong>ACTION_MOVE</strong>里面的代码，<strong>mTouchPath</strong>没有实例化，会报空指针错误。</p>
+<h4 id="方案-3"><a href="#方案-3" class="headerlink" title="方案"></a>方案</h4><p>取消边界限制，让<strong>ACTION_DOWN</strong>里面的实例化以及其他初始化操作在任何时候都能执行到。</p>
+<h3 id="Bug2-点击删除-撤销-删除后无法最终删除图片"><a href="#Bug2-点击删除-撤销-删除后无法最终删除图片" class="headerlink" title="Bug2:点击删除-撤销-删除后无法最终删除图片"></a>Bug2:点击删除-撤销-删除后无法最终删除图片</h3><p>这个Bug最初是由于我快速随便点按才出现的，刚开始不知道Bug是偶现还是必现，后来慢慢操作了很多次（总的加起来应该有1个多小时），终于发现这个Bug是必现的，操作步骤就是：删除-撤销-删除。在思考的过程中，也走了一些弯路才最终定位到问题的地方，在此记录下来，下次遇到类似的非崩溃型Bug应该如何思考：</p>
+<ul>
+<li>与Bug出现相关的方法多打Log，Log打的位置要有选择：分析某个方法里面代码分成几段（<strong><code>例如哪里有return的，可能导致该方法中途就退出的</code></strong>），分别插入Log</li>
+<li>再根据Bug出现的步骤进行复现，分析Log，看最终导致Bug出现的原因</li>
+</ul>
+<p>这个Bug产生的原因是：删除图片所需的<strong><code>Zfid</code></strong>为空，<strong><code>deleteFileAndUpdate</code></strong>方法没有执行完就已经退出。最终通过修改<strong><code>FileUtil类</code></strong>里的<strong><code>parseHeaderZfid</code></strong>方法，解决了这个Bug。</p>
+<h3 id="Bug3-performing-stop-of-activity-that-is-not-resumed"><a href="#Bug3-performing-stop-of-activity-that-is-not-resumed" class="headerlink" title="Bug3:performing stop of activity that is not resumed"></a>Bug3:performing stop of activity that is not resumed</h3><h4 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h4><p>这个Bug是非崩溃型的，刚开始报错的时候都没有去注意它，后来有空了，在stackoverflow找到相应的答案，在没门儿的场景里面产生这个报错的原因是：</p>
+<ol>
+<li>进行完临时保存图片（非加密）的task以后，在回调中要进行跳转到另外一个activity</li>
+<li>在跳转之前，要<code>restartCameraPreview</code>，涉及到UI操作，所以用<code>handler</code>发送<code>emptyMessage</code>，在再<code>handleMessage</code>里进行处理</li>
+<li>开始的时候跳转activity的操作直接在回调里面进行</li>
+<li>跳转时执行<code>onStop</code>，但当前activity的重启操作还没有进行完，也就是没有执行<code>onResume</code></li>
+</ol>
+<h4 id="方案-4"><a href="#方案-4" class="headerlink" title="方案"></a>方案</h4><p>将跳转activity的操作也在<code>handleMessage</code>里面处理，位置在<code>restartCameraPreview</code>后面，这样就保证了<code>SecureCameraActivity</code>重启完，再进行跳转，也就不会报上面的错了。</p>
+<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h2><h3 id="xmlns属性"><a href="#xmlns属性" class="headerlink" title="xmlns属性"></a>xmlns属性</h3><p><strong><code>xmlns</code></strong>是<strong>xml namespace</strong>的缩写，标准的格式是<strong><code>xmlns:namespace-prefix=&quot;namespaceURI&quot;</code></strong>，这个属性需要定义在最外层开始的标记中，并且所有带有相同prefix的子元素都会与这个命名空间（namespace）相关联。如果没有在最外层定义相关的命名空间，子元素也就不能使用该命名空间。<br>一般常用的命名空间有：</p>
+<ul>
+<li>xmlns:android=”namespaceURI”</li>
+<li>xmlns:app=”namespaceURI”</li>
+<li>xmlns:tools=”namespaceURI”</li>
+<li>对于自定义控件，可以自定义xmlns，具体参考:<a href="http://blog.csdn.net/tanqiantot/article/details/8588771" target="_blank" rel="external">xmlns:android作用以及自定义布局属性</a></li>
+</ul>
+<h3 id="string-xml中-1-s、-1-d等用法"><a href="#string-xml中-1-s、-1-d等用法" class="headerlink" title="string.xml中%1$s、%1$d等用法"></a>string.xml中%1$s、%1$d等用法</h3><p>如果在string.xml中定义的部分内容需要在代码中进行替换，则可以用<strong><code>%1$s</code></strong>这样的用法，具体用法如下：</p>
+<ul>
+<li><p>格式</p>
+<ul>
+<li><strong>%1$s</strong>（表示第1个需要替换的位置，是字符串类型）</li>
+<li><strong>%1$d</strong>（表示第1个需要替换的位置，是整型类型）</li>
+<li><strong>%1$f</strong>（表示第1个需要替换的位置，是浮点数类型）</li>
+<li><strong>%2$d</strong>（表示第2个需要替换的位置，是整型类型）</li>
+</ul>
+</li>
+<li><p>用法</p>
+<ul>
+<li>在string.xml进行定义，例如：<strong><code>&lt;string name=&quot;photo_import_progress&quot;&gt;正在导入(%1$d/%2$d),请稍后...&lt;/string&gt;</code></strong></li>
+<li>在代码中用<strong><code>getString(R.string.photo_import_progress, int, int)</code></strong>或者<strong><code>String.format(getString(R.string.photo_import_progress), int, int)</code></strong>来进行替换组成新的字符串</li>
+</ul>
+</li>
+</ul>
+<h3 id="swtich-case代码规范–case后面有没有大括号的区别"><a href="#swtich-case代码规范–case后面有没有大括号的区别" class="headerlink" title="swtich-case代码规范–case后面有没有大括号的区别"></a>swtich-case代码规范–case后面有没有大括号的区别</h3><h4 id="不加大括号"><a href="#不加大括号" class="headerlink" title="不加大括号"></a>不加大括号</h4><p>整个switch里面的case都在一个作用域里，相同的变量只能初始化一次。</p>
+<h4 id="加大括号"><a href="#加大括号" class="headerlink" title="加大括号"></a>加大括号</h4><p>每个case里面都是一个作用域，相同的变量名可以在各自作用域里进行初始化，而不会互相影响。为了保险起见，最好在case后面都加上大括号，避免作用域问题引起程序编译问题。<br>详细说明参考：<a href="http://www.cnblogs.com/tony-yang-flutter/p/3601056.html" target="_blank" rel="external">java Switch中的case后面加上大括号({})和不加大括号的区别</a></p>
+<h3 id="判断用户是否第一次进入应用以显示介绍页"><a href="#判断用户是否第一次进入应用以显示介绍页" class="headerlink" title="判断用户是否第一次进入应用以显示介绍页"></a>判断用户是否第一次进入应用以显示介绍页</h3><p>将应用的<strong>VersionCode</strong>用<strong>SecurePreferences类</strong>进行保存，有两种情况：</p>
+<ul>
+<li>新用户：<strong><code>mSharedPrefs.getString(mPreferencesFirstIn, &quot;&quot;)</code></strong>为空，此时进入<strong>IntroductionActivity</strong></li>
+<li>老用户升级以后：<strong><code>mSharedPrefs.getString(mPreferencesFirstIn, &quot;&quot;)</code></strong>获得的<strong>VersionCode</strong>跟保存着的老版本不一样，此时也进入<strong>IntroductionActivity</strong>。等用户点击<strong><code>开始体验</code></strong>进入应用后，将<strong>VersionCode</strong>进行保存，这样第二次进入时，就不会再显示介绍页</li>
+</ul>
+<h3 id="onActivityResult方法"><a href="#onActivityResult方法" class="headerlink" title="onActivityResult方法"></a>onActivityResult方法</h3><p>如果在页面跳转时如果使用了<code>startActivityForResult</code>方法，那当返回当前页面时，传回来的值，可以重写<code>onActivityResult</code>方法来完成自己想要的一些操作，在V1.3.2.0版本开发过程中，规范了页面跳转的逻辑，尽量使用<code>startActivityForResult</code>进行页面跳转，并用<code>RESULT_CANCEL</code>、<code>RESULT_OK</code>等进行传值，而不是像以前一样<strong>每次都重新startActivity</strong>，造成不必要的浪费。</p>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><p>在开发过程中，由于<code>QQ分享</code>的回调也要重写<code>onActivityResult</code>方法，放开始的时候，没有判断<code>requestCode</code>，造成<code>QQ分享</code>回调一直不成功，后来才被告知是没有判断<code>requestCode</code>，造成回调也无法判断。所以在以后进行开发时，要把<code>requestCode</code>和<code>resultCode</code>一起进行判断，避免跟其它一些返回的值有冲突。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MME_v1.3.2.1+v1.3.3.0_开发个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MME_v1.3.0_开发个人总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

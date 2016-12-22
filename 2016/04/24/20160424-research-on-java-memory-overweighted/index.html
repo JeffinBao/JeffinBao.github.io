@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>记一次Java内存占用过大排查 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍背景介绍最近公司要上线一个Java后台服务，在最后性能测试的时候发现，高并发条件下，该服务内存占用居高不下（跑10个小时以上能飙到4G）。这样奇高的内存占用肯定是无法接受的，所以需要排查到底是哪里出问题了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次Java内存占用过大排查">
+<meta property="og:url" content="http://yoursite.com/2016/04/24/20160424-research-on-java-memory-overweighted/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="介绍背景介绍最近公司要上线一个Java后台服务，在最后性能测试的时候发现，高并发条件下，该服务内存占用居高不下（跑10个小时以上能飙到4G）。这样奇高的内存占用肯定是无法接受的，所以需要排查到底是哪里出问题了。">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/84460b13gw1f3841va2qxj20lu0i3thw.jpg">
+<meta property="og:updated_time" content="2016-12-22T06:00:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次Java内存占用过大排查">
+<meta name="twitter:description" content="介绍背景介绍最近公司要上线一个Java后台服务，在最后性能测试的时候发现，高并发条件下，该服务内存占用居高不下（跑10个小时以上能飙到4G）。这样奇高的内存占用肯定是无法接受的，所以需要排查到底是哪里出问题了。">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/84460b13gw1f3841va2qxj20lu0i3thw.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20160424-research-on-java-memory-overweighted" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记一次Java内存占用过大排查
+    </h1>
+  
+
+        <a href="/2016/04/24/20160424-research-on-java-memory-overweighted/" class="archive-article-date">
+  	<time datetime="2016-04-24T13:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近公司要上线一个Java后台服务，在最后性能测试的时候发现，高并发条件下，该服务内存占用居高不下（跑10个小时以上能飙到4G）。这样奇高的内存占用肯定是无法接受的，所以需要排查到底是哪里出问题了。</p>
+<a id="more"></a>
+<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
+<li>OS版本：<code>CentOS release 6.5 (Final)</code></li>
+<li>JDK版本：<code>1.7.0_79</code></li>
+</ul>
+<h1 id="排查过程以及踩的坑"><a href="#排查过程以及踩的坑" class="headerlink" title="排查过程以及踩的坑"></a>排查过程以及踩的坑</h1><h2 id="1-查看Linux系统上Java内存情况"><a href="#1-查看Linux系统上Java内存情况" class="headerlink" title="1. 查看Linux系统上Java内存情况"></a>1. 查看Linux系统上Java内存情况</h2><h3 id="a-实时查看"><a href="#a-实时查看" class="headerlink" title="a. 实时查看"></a>a. 实时查看</h3><p>在Google的过程中，发现<code>jmap</code>这个JDK安装过程中自带的工具可以满足查看内存情况需求，所以就用命令行敲入<code>jmap</code>，但是显示<code>command not found</code>，说明<code>jmap</code>工具在远程主机中不存在。在查看了Java环境后发现，<strong><code>由于远程主机只需要运行Java服务，所以只装了JRE，没有装JDK，所以自然没有jmap工具</code></strong>。</p>
+<p>接着就去下载了Linux版本的JDK，将安装包放在在<code>/usr/java/</code>目录下并解压，然后配置<code>环境变量</code>，完成JDK安装，用<code>java -version</code>检查是否安装成功。（<code>踩得坑</code>：由于我司提供256位数据加密服务，但由于出口限制，AES加密长度被限制为128位，这时候需要替换<code>local_policy.jar</code>和<code>US_export_policy.jar</code>两个jar包，否则无法正常加解密。路径在jdk里的jre目录下：<code>/jre/lib/security</code>）</p>
+<p>准备好JDK环境之后，命令行输入：<strong><code>jmap -histo &lt;pid&gt; | head -20</code></strong>，就可以查看某个pid的java服务占用内存排名前20的类。<strong>注</strong>：该命令不适用子Windows系统里。</p>
+<p>通过实时查看内存占用情况，发现占用内存最高的几个类大部分都是Netty的buffer相关类，那问题就可以确定存在于使用Netty框架时使用了buffer，但是没有调用<code>buf.release()</code>去释放buffer。</p>
+<h3 id="b-把heap文件dump下来分析"><a href="#b-把heap文件dump下来分析" class="headerlink" title="b. 把heap文件dump下来分析"></a>b. 把heap文件dump下来分析</h3><ul>
+<li><code>jmap</code>还有一个指令可以把整个内存情况转成文件形式保存下来：<strong><code>jmap -dump:format=b,file=filename.bin &lt;pid&gt;</code></strong></li>
+<li>从远程用<code>sz filename.bin</code>命令将文件下载到本地来，在用<code>Eclipse</code>插件<code>MAT(Memory Analyse Tool)</code>分析整个文件，<code>MAT</code>插件需要下载安装，方法Google可以找到。</li>
+</ul>
+<p><strong><code>注：</code></strong>在使用这个命令导出来的文件很大，但是最终MAT里分析出来的图表各个类占用的内存却很小，不知道是哪里出问题了，感到迷惑！</p>
+<p>不过在这个之前，由于启动脚本里设置了如果发生OOM则会将<code>hprof</code>文件dump出来，在其中一次测试中，<code>.hprof</code>文件就产生了，下载到本地用<code>MAT</code>进行分析后能看到以下结果：</p>
+<p><img src="http://ww4.sinaimg.cn/large/84460b13gw1f3841va2qxj20lu0i3thw.jpg" alt="mat-heap-analysis"></p>
+<p>这里面就能看到，<code>ConcurrentHashMap</code>占用了大部分的内存，所以问题定位到使用该map的代码里。另外MAT工具还有很只管的饼图来呈现哪些类占用了很大内存。</p>
+<h2 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2. 解决方案"></a>2. 解决方案</h2><h3 id="a-解决ConcurrentHashMap问题"><a href="#a-解决ConcurrentHashMap问题" class="headerlink" title="a. 解决ConcurrentHashMap问题"></a>a. 解决ConcurrentHashMap问题</h3><p>在Review代码之后，发现ConcurrentHashMap会将整个http请求放入缓存，当时这么做的原因是，我们其实是一个通信转发的框架，所以需要把每个请求记录下来，等远端有返回后，可以找到对应的Channel将Response返回。而实际上，不需要缓存整个http请求，只要把请求进来时候的<code>Channel</code>进行缓存即可，所以将ConcurrentHashMap的键值改成了<code>&lt;String, Channel&gt;</code>，其中<code>String</code>是<code>UUID.randomUUID().toString()</code>产生的随机字符串。</p>
+<h3 id="b-解决Netty的buffer没有被release问题"><a href="#b-解决Netty的buffer没有被release问题" class="headerlink" title="b. 解决Netty的buffer没有被release问题"></a>b. 解决Netty的buffer没有被release问题</h3><p>在Review代码之后，发现逻辑中有两个地方用到了<code>ByteBuf</code>：</p>
+<ul>
+<li>Http请求进来时，会将<code>请求body</code>缓存到<code>ByteBuf</code>里，这里是显式调用。解决：<code>在返回Response之后将该buf释放掉</code>。</li>
+<li>HttpResponse中，也会先将<code>返回body</code>缓存到<code>ByteBuf</code>里，这里是隐式调用，刚开始都没发现。解决：<code>显式生成ByteBuf对象，采用response.content().writeBytes(buf)方法写入response，写完之后，调用buf.release()方法</code>。</li>
+</ul>
+<p><strong>注：</strong>关于<code>ByteBuf</code>释放问题，如果<code>Netty中的Handler</code>将<code>buf</code>传递给其它类使用，则无需调用<code>buf.release()</code>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/04/24/20160424-research-on-java-memory-overweighted/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/02/27/2016-02-26-colorful-notes-v1.0.0-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

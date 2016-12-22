@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MME_v1.2.0_改版后_开发个人总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享功能相关微信分享总结在本次开发微信分享模块的过程中，也遇到了一些问题，下面的几点是总结：
+
+功能需求：分享的时候可以选择原图还是缩略图。而微信API可以支持两种方式分享本地图片：本地url和bitmap。使用本地url进行分享的问题是，微信API会在拿到某个路径下的图片后对其自动进行压缩，所以就无法达到功能的要求：可以发原图或者缩略图。在这里，最终选择的是发bitmap，区别就是，原图发送的是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MME_v1.2.0_改版后_开发个人总结">
+<meta property="og:url" content="http://yoursite.com/2015/08/08/20150819-mme-v1.2.0-after-revision-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="分享功能相关微信分享总结在本次开发微信分享模块的过程中，也遇到了一些问题，下面的几点是总结：
+
+功能需求：分享的时候可以选择原图还是缩略图。而微信API可以支持两种方式分享本地图片：本地url和bitmap。使用本地url进行分享的问题是，微信API会在拿到某个路径下的图片后对其自动进行压缩，所以就无法达到功能的要求：可以发原图或者缩略图。在这里，最终选择的是发bitmap，区别就是，原图发送的是">
+<meta property="og:updated_time" content="2016-12-22T06:55:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MME_v1.2.0_改版后_开发个人总结">
+<meta name="twitter:description" content="分享功能相关微信分享总结在本次开发微信分享模块的过程中，也遇到了一些问题，下面的几点是总结：
+
+功能需求：分享的时候可以选择原图还是缩略图。而微信API可以支持两种方式分享本地图片：本地url和bitmap。使用本地url进行分享的问题是，微信API会在拿到某个路径下的图片后对其自动进行压缩，所以就无法达到功能的要求：可以发原图或者缩略图。在这里，最终选择的是发bitmap，区别就是，原图发送的是">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20150819-mme-v1.2.0-after-revision-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MME_v1.2.0_改版后_开发个人总结
+    </h1>
+  
+
+        <a href="/2015/08/08/20150819-mme-v1.2.0-after-revision-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-08-08T07:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分享功能相关"><a href="#分享功能相关" class="headerlink" title="分享功能相关"></a>分享功能相关</h3><h4 id="微信分享"><a href="#微信分享" class="headerlink" title="微信分享"></a>微信分享</h4><h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>在本次开发微信分享模块的过程中，也遇到了一些问题，下面的几点是总结：</p>
+<ul>
+<li>功能需求：分享的时候可以选择原图还是缩略图。而微信API可以支持两种方式分享本地图片：本地url和bitmap。使用本地url进行分享的问题是，微信API会在拿到某个路径下的图片后对其自动进行压缩，所以就无法达到功能的要求：可以发原图或者缩略图。在这里，最终选择的是发bitmap，区别就是，原图发送的是大尺寸的bitmap，而缩略图则是发送小尺寸的bitmap。</li>
+<li>使用微信API发送图片，<strong><code>WXMediaMessage</code></strong>类中的<strong><code>thumbData</code></strong>要传入缩略图，而这个缩略图大小又不能超过32Kb，所以要把这个缩略图大小压缩到小于32Kb才可以。</li>
+<li>微信官方文档说分享图片或者文件的限制是10Mb，但是在实测中发现，图片大于2Mb，就会出现调不起来微信分享的情况。可能也是因为图片太大，系统生成bitmap并且进行压缩这样的耗时操作，会导致性能吃紧的情况。所以在生成bitmap时都会将从路径中拿到的图片进行压缩，操作的方式是改变<strong><code>BitmapFactory.Options</code></strong>这个类中的<strong><code>inSampleSize</code></strong>参数。</li>
+<li>上面一点说到<strong><code>inSampleSize</code></strong>这个参数，在实际开发过程中，发现只有当参数为2的方幂时（1，2，4，8，依次往下），才会在图片尺寸上有变化。<ul>
+<li>当为<strong><code>1</code></strong>时，不压缩</li>
+<li>当为<strong><code>2</code></strong>时，压缩1/4左右（例如：500多Kb压缩到100多Kb）</li>
+<li>当为<strong><code>3</code></strong>时，压缩程度与<strong><code>2</code></strong>时相同</li>
+<li>当为<strong><code>4</code></strong>时，再压缩1/4左右，之后5，6，7的压缩比例都与4相同</li>
+<li>当为<strong><code>8</code></strong>时，再压缩1/4左右，之后再以此类推</li>
+</ul>
+</li>
+<li>微信分享的回调机制是在<strong><code>WXEntryActivity</code></strong>重写<strong><code>onResp</code></strong>函数来处理微信分享的返回信息，而<strong><code>WXEntryActivity</code></strong>有必须放在包名下面的<strong><code>wxapi</code></strong>这个文件夹里。</li>
+<li>另外微信分享对于应用签名也有者严格的限制，用不同的keystore打包会生成不同的应用签名，而微信分享只认准一个应用签名，所以如果<strong><code>debug</code></strong>和<strong><code>release</code></strong>的keystore是不同的，则需要在应用正式上线前，将release版的签名再次提交审核，通过之后才能进行微信分享。</li>
+<li>关于微信分享的其他一些细节，有一篇网上的博客也写得很详细，可以参考: <a href="http://www.cnblogs.com/suncoolcat/p/3295351.html" target="_blank" rel="external">Android 微信SDK分享功能中的最全过程步骤分析</a></li>
+</ul>
+<a id="more"></a>
+<h5 id="图片压缩部分代码"><a href="#图片压缩部分代码" class="headerlink" title="图片压缩部分代码"></a>图片压缩部分代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public static byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) &#123;</div><div class="line">		ByteArrayOutputStream output = new ByteArrayOutputStream();</div><div class="line">		int compressRatio = 30;</div><div class="line">		bmp.compress(CompressFormat.JPEG, compressRatio, output);</div><div class="line">		//微信限制缩略图大小为32kb</div><div class="line">		<span class="keyword">while</span> (output.toByteArray().length/1024&gt;32) &#123;</div><div class="line">			output.reset();</div><div class="line">			compressRatio -= 10;</div><div class="line">			bmp.compress(CompressFormat.JPEG,compressRatio,output);</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">if</span> (needRecycle) &#123;</div><div class="line">			bmp.recycle();</div><div class="line">			&#125;</div><div class="line">		byte[] result = output.toByteArray();</div><div class="line">		try &#123;</div><div class="line">			output.close();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="built_in">return</span> result;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<p>上面一段代码是将一个bitmap进行压缩后，再用IO流返回一个byte数组传入<strong><code>WXMediaMessage</code></strong>中的<strong><code>thumbData</code></strong>参数。</p>
+<h4 id="QQ分享"><a href="#QQ分享" class="headerlink" title="QQ分享"></a>QQ分享</h4><h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>QQ分享的限制没有微信那么多，对于图片的大小也没有特殊限制，分享本地图片的方法也只有一种：本地url。只要给QQ的API一个本地url路径，它就会去那个路径下找图片，然后发送。但是MME相机出于对安全的考虑，相机里面的照片存放路径是应用私有的，如果传这个url路径给QQ分享，它的API没有权限去拿到这个路径下的图片，所以在开发过程中采用的方案是：</p>
+<ul>
+<li>进行QQ分享时，先获取到当前图片解密后的应用下路径，并生成bitmap</li>
+<li>将bitmap写入到系统公有的一个路径里，为了安全考虑，此时要将保存图片的文件夹设置为不可见，采用在文件夹名签名加“.”的方式</li>
+<li>传入该公有的路径给QQ分享API，完成QQ分享操作</li>
+<li>在QQ分享的回调函数<strong><code>IUiListener</code></strong>类里面将刚刚保存的图片删除（不管有没有分享成功）,也是为了安全考虑</li>
+</ul>
+<h4 id="保存到本地"><a href="#保存到本地" class="headerlink" title="保存到本地"></a>保存到本地</h4><h5 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h5><p>保存到本地功能有一个地方需要注意的是，在保存完成后，需要发个广播，来通知系统更新刚保存到本地相册的图片，代码是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(<span class="string">"file://"</span> + tempDir.getAbsolutePath() + <span class="string">"/"</span> + fileName)));</div></pre></td></tr></table></figure></p>
+<h3 id="Android里Touch事件机制"><a href="#Android里Touch事件机制" class="headerlink" title="Android里Touch事件机制"></a>Android里Touch事件机制</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在本版开发中，有两个针对相机的功能：点击聚焦和双指缩放变焦。这两个功能都是和Touch事件相关的操作，开始的思路是对<strong><code>CameraPreview</code></strong>对象设置<strong><code>onTouchListener</code></strong>监听，然后在里面的<strong><code>onTouch</code></strong>方法实现双指缩放逻辑，但是因为原来的代码在<strong><code>CameraPreview</code></strong>类中重写了<strong><code>onTouchEvent</code></strong>方法，这样就导致了只能实现双指缩放而不能实现点击聚焦。针对这个问题，查了网上对于两者区别的比对，现在记录在下面，以后想起来可以翻一下。</p>
+<h4 id="onTouchListener中的onTouch方法与onTouchEvent的区别"><a href="#onTouchListener中的onTouch方法与onTouchEvent的区别" class="headerlink" title="onTouchListener中的onTouch方法与onTouchEvent的区别"></a>onTouchListener中的onTouch方法与onTouchEvent的区别</h4><p>这里只写结论，分析过程可以参考<a href="http://www.cnblogs.com/shitianzeng/articles/2467533.html" target="_blank" rel="external">android onTouchEvent和setOnTouchListener中onTouch的区别</a>或者阅读<strong><code>View</code></strong>类里面的<strong><code>dispatchTouchEvent</code></strong>方法。</p>
+<ul>
+<li><strong><code>onTouchListener</code></strong>优先级高于<strong><code>onTouchEvent</code></strong></li>
+<li>系统会先执行<strong><code>onTouchListener</code></strong>中的<strong><code>onTouch</code></strong>方法，如果<strong><code>onTouch</code></strong>方法返回<strong><code>true</code></strong>，则系统会判断此次Touch事件已经执行，也就不会再去执行<strong><code>onTouchEvent</code></strong>方法；只有当<strong><code>onTouch</code></strong>返回<strong><code>false</code></strong>时，才会继续执行<strong><code>onTouchEvent</code></strong>方法</li>
+</ul>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>由于原来代码里面的点击聚焦功能写在<strong><code>CameraPreview</code></strong>类里，为了代码能统一起来，所以准备把双指缩放的功能也加入到<strong><code>onTouchEvent</code></strong>里面进行处理，下面是一些注意点：</p>
+<ul>
+<li><strong><code>onTouchEvent</code></strong>方法需要返回<strong><code>true</code></strong>才行，否则系统无法处理此次Touch事件，直观的感受就是只会执行<strong>MotionEvent.ACTION_DOWN</strong>，而不会去执行其它的一些手势操作</li>
+<li><strong><code>MotionEvent.ACTION_MASK</code></strong>作用是识别多指操作</li>
+<li><strong><code>onTouchEvent</code></strong>中的<strong><code>MotionEvent.ACTION_DOWN</code></strong>+<strong><code>MotionEvent.ACTION_UP</code></strong>动作就等于<strong><code>onClick</code></strong>方法执行了一次</li>
+</ul>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>另外一个遗留问题是，在进行了点按聚焦后，相机的连续自动对焦功能失效，最终的解决方案是：</p>
+<ul>
+<li>在<strong><code>CameraPreview</code></strong>里的<strong><code>touchFocus</code></strong>方法里重新设置连续自动对焦</li>
+</ul>
+<h3 id="两个在UI线程（主线程）更新UI的例子"><a href="#两个在UI线程（主线程）更新UI的例子" class="headerlink" title="两个在UI线程（主线程）更新UI的例子"></a>两个在UI线程（主线程）更新UI的例子</h3><h4 id="导入照片显示进度的Dialog"><a href="#导入照片显示进度的Dialog" class="headerlink" title="导入照片显示进度的Dialog"></a>导入照片显示进度的Dialog</h4><ul>
+<li>需要记录当前已经解密完成的照片数量，也要拿到总共需要导入的照片数量</li>
+<li>在开始记录的时候，用<strong><code>handler</code></strong>发送空消息，在UI线程里面显示dialog，并且时时更新导入进度</li>
+<li>在导入完成时，用<strong><code>handler</code></strong>发送<strong><code>ON_IMPORT_COUNT_END</code></strong>空消息，在UI线程里<strong><code>dismiss</code></strong>掉dialog</li>
+</ul>
+<h5 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h5><p>在<strong><code>TaskCallback&lt;Image&gt;</code></strong>对象的<strong><code>onStateChange</code></strong>方法里记录导入加密的情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (image.getTaskState().equals(ImageEncryptTaskManager.EncryptTask.STATE_ENCRYPTED) &#123;</div><div class="line">                mPhotoCount = mPhotoCount - 1;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (mPhotoCount == 0) &#123;</div><div class="line">                    handler.sendEmptyMessage(ON_IMPORT_END);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                mProgressCount += 1;</div><div class="line">                handler.sendEmptyMessage(ON_IMPORT_COUNT);</div><div class="line">                <span class="keyword">if</span>(mProgressCount == mAdapter.getSelectedItemsCount()) &#123;</div><div class="line">                    mCountCompleted = <span class="literal">true</span>;</div><div class="line">                    handler.sendEmptyMessage(ON_IMPORT_COUNT_END);</div><div class="line">                &#125;</div><div class="line">                </div><div class="line">            &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="显示Toast"><a href="#显示Toast" class="headerlink" title="显示Toast"></a>显示Toast</h4><h5 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h5><p>这里出现的问题是：在完成马赛克操作，点击保存进行加密保存的时候，这个过程实在子线程里进行的，会有一个<strong><code>onEncrypt</code></strong>的回调函数，刚开始的时候，把照片保存成功的Toast直接写在这个回调函数里，后面发现这样写会报错，然后代码也就不会往下执行，也无法进行页面的跳转。</p>
+<h5 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h5><p>在<strong><code>onEncrypt</code></strong>回调函数里面用handler发送空消息，然后重写handler里面的<strong><code>handleMessage</code></strong>方法，进行Toast显示以及页面跳转等操作。</p>
+<h3 id="图片保存路径"><a href="#图片保存路径" class="headerlink" title="图片保存路径"></a>图片保存路径</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>在进完马赛克操作后，用户点击进行保存，刚开始的保存方式是直接调用<strong><code>GPUImageView</code></strong>类中的<strong><code>saveImage</code></strong>方法，而安全相册里面的照片都是保存在应用的私有路径里，所以刚开始的时候，在安全相册里一直看不到保存的马赛克后的图片。</p>
+<h4 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h4><p>参照拍照完的照片加密保存的方式，对马赛克图片也同样进行加密保存到应用的私有路径里。</p>
+<h4 id="几种图片路径的区别"><a href="#几种图片路径的区别" class="headerlink" title="几种图片路径的区别"></a>几种图片路径的区别</h4><ul>
+<li>内部存储（Internal Storage）<ul>
+<li><strong><code>context.getFilesDir()</code></strong>是将文件保存在以应用报名命名的私有目录里</li>
+<li><strong><code>context.getCacheDir()</code></strong>是将文件保存在应用的私有缓存目录里</li>
+</ul>
+</li>
+<li>外部存储（External Storage）<ul>
+<li><strong><code>Environment.getExternalStoragePublicDirectory（String type）</code></strong>是将文件保存在公有目录下，并且应用卸载后数据不会被删除</li>
+<li><strong><code>context.getExternalFilesDir(String type)</code></strong>是将文件保存在外部存储的根目录下，数据会随着程序被卸载而删除</li>
+</ul>
+</li>
+</ul>
+<h3 id="通过路径获取图片的Exif信息"><a href="#通过路径获取图片的Exif信息" class="headerlink" title="通过路径获取图片的Exif信息"></a>通过路径获取图片的Exif信息</h3><h4 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h4><p>Android系统由于是开源的，不同厂商会针对原生系统做自己的优化，对于拍照应用来说，有些厂商会对图片的旋转进行处理，而有些则不会，这就造成在有些机型上，拍摄的照片在显示时会翻转过来。</p>
+<h4 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h4><p>通过路径获取图片的Exif信息，得到图片的旋转角度，然后按照这个角度对图片进行翻转操作，让图片在显示的时候重新正回来。</p>
+<h4 id="获取图片Exif信息代码"><a href="#获取图片Exif信息代码" class="headerlink" title="获取图片Exif信息代码"></a>获取图片Exif信息代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private static int getExifOrientation(String filePath) &#123; </div><div class="line"></div><div class="line">		int degree = 0;</div><div class="line">		ExifInterface exif = null;</div><div class="line">		try &#123;</div><div class="line">			exif = new ExifInterface(filePath);</div><div class="line">			&#125; catch (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (exif != null) &#123;</div><div class="line">			int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,-1);</div><div class="line">			<span class="keyword">if</span> (orientation != -1) &#123;</div><div class="line">				switch (orientation) &#123;</div><div class="line">					<span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_90:</div><div class="line">						degree = 90;</div><div class="line">						<span class="built_in">break</span>;</div><div class="line">					<span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_180:</div><div class="line">						degree = 180;</div><div class="line">						<span class="built_in">break</span>;</div><div class="line">					<span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_270:</div><div class="line">						degree = 270;</div><div class="line">						<span class="built_in">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="built_in">return</span> degree;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>获取degree之后，再进行翻转操作，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Matrix matrix = new Matrix();</div><div class="line">matrix.setRotate(degree,bitmap.getWidth()/2,bitmap.getHeight()/2);</div><div class="line">Bitmap bmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, <span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="UI相关"><a href="#UI相关" class="headerlink" title="UI相关"></a>UI相关</h3><h4 id="Button点击效果"><a href="#Button点击效果" class="headerlink" title="Button点击效果"></a>Button点击效果</h4><ul>
+<li>如果想要Button里面的字有点击效果，则需要设置<strong><code>textColor</code></strong>属性，用<strong><code>selector</code></strong>来设置点击时候的颜色</li>
+<li>如果想要Button的背景有点击效果，需要设置的是<strong><code>background</code></strong>属性</li>
+</ul>
+<h4 id="ImageButton和ImageView"><a href="#ImageButton和ImageView" class="headerlink" title="ImageButton和ImageView"></a>ImageButton和ImageView</h4><ul>
+<li><strong><code>ImageButton</code></strong>的图片默认会放在中心位置，虽然可以用<strong><code>scaleType</code></strong>属性设置放在左边、中间还是右边，但是没法设置<strong><code>padding</code></strong>属性，让<strong><code>ImageButton</code></strong>在<strong><code>wrap_content</code></strong>情况下点击面积更大</li>
+<li>而<strong><code>ImageView</code></strong>可以设置<strong><code>padding</code></strong>属性让点击面积更大</li>
+</ul>
+<h4 id="设置强制横屏的代码"><a href="#设置强制横屏的代码" class="headerlink" title="设置强制横屏的代码"></a>设置强制横屏的代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">set</span>RequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</div></pre></td></tr></table></figure>
+<h4 id="如何阻止系统进行截屏操作"><a href="#如何阻止系统进行截屏操作" class="headerlink" title="如何阻止系统进行截屏操作"></a>如何阻止系统进行截屏操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Window w=getWindow();</div><div class="line">w.addFlags(WindowManager.LayoutParams.FALG_SECURE);</div></pre></td></tr></table></figure>
+<h3 id="马赛克功能"><a href="#马赛克功能" class="headerlink" title="马赛克功能"></a>马赛克功能</h3><h4 id="马赛克功能实现机制"><a href="#马赛克功能实现机制" class="headerlink" title="马赛克功能实现机制"></a>马赛克功能实现机制</h4><ul>
+<li><strong><code>bmBaseLayer</code></strong>层，可以理解为直接拿原始图片作为最底下那一层</li>
+<li><strong><code>bmMosaicLayer</code></strong>层，可以理解为在<strong><code>bmBaseLayer</code></strong>上面一层，最终的马赛克图像是由两层叠加生成一个新的bitmap进行保存后形成的<ul>
+<li>对于<strong><code>bmMosaicLayer</code></strong>这一层来说，实际不是对它进行直接操作，而是在它上面进行画图操作，其中有一层是<strong><code>bmCoverLayer</code></strong>，在代码里有三种可选：<strong><code>GridMosaic</code></strong>、<strong><code>ColorMosaic</code></strong>和<strong><code>BlurMosaic</code></strong>，在我们这里选择的是<strong><code>GridMosaic</code></strong>。具体实现方式是：将图片分成一格一格，取左上角那个点的像素颜色值，然后设置成那个格子的颜色，最后进行画图</li>
+<li>还有一层就是<strong><code>bmTouchLayer</code></strong>，是我们手进行操作的那一层，最终两层合在一起，是<strong><code>bmMosaicLayer</code></strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="Bug1-橡皮擦操作后的位置无法再次进行马赛克操作"><a href="#Bug1-橡皮擦操作后的位置无法再次进行马赛克操作" class="headerlink" title="Bug1:橡皮擦操作后的位置无法再次进行马赛克操作"></a>Bug1:橡皮擦操作后的位置无法再次进行马赛克操作</h4><h5 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h5><p>由于<strong><code>updatePathMosaic</code></strong>的机制是实时绘制<strong>马赛克</strong>和<strong>橡皮擦</strong>操作的路径集合，并且<strong>橡皮擦</strong>的绘制在后面，所以当两者路径重合时，后绘制的<strong>橡皮擦</strong>会覆盖<strong>马赛克</strong>，所以在观感上就会造成<strong>橡皮擦操作后的位置无法再次进行马赛克操作</strong>的感觉</p>
+<h5 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h5><ul>
+<li><strong><code>bmTouchLayer</code></strong>从局部变量变成全局变量，由它来保存马赛克和橡皮擦操作后的图层，而之前是由一个<strong><code>Path</code></strong>集合来分别保存<strong>马赛克</strong>和<strong>橡皮擦</strong>的路径</li>
+<li>每次进行操作之前，清空<strong>Path</strong>集合里面的路径</li>
+</ul>
+<h4 id="Bug2-某些小图片上划过的Path和Grid宽度很大"><a href="#Bug2-某些小图片上划过的Path和Grid宽度很大" class="headerlink" title="Bug2:某些小图片上划过的Path和Grid宽度很大"></a>Bug2:某些小图片上划过的Path和Grid宽度很大</h4><h5 id="问题描述-5"><a href="#问题描述-5" class="headerlink" title="问题描述"></a>问题描述</h5><p>尺寸较小的图片进入马赛克页面后会进行拉伸处理，之前对于<strong>Path</strong>和<strong>Grid</strong>的宽度都是采用一个固定值，这样就会造成小图上进行马赛克处理时划过的<strong>Path</strong>和<strong>Grid</strong>宽度很大</p>
+<h5 id="解决方案-5"><a href="#解决方案-5" class="headerlink" title="解决方案"></a>解决方案</h5><ul>
+<li>对于<strong>Grid</strong>的宽度问题，根据图片宽度设置几个Level，每个Level固定每行<strong>Grid</strong>的个数，这样也就不会造成小图片每行只有一两个<strong>Grid</strong>的情况，但是对于<strong>Grid</strong>的宽度也有一个极限值是<strong>50</strong>，因为如果不做处理，非常大的图片一行也只有20个<strong>Grid</strong>，就会造成每个<strong>Grid</strong>的宽度特别大</li>
+<li>对于<strong>Path</strong>宽度的问题，小图设置宽度较小，大图设置宽度较大</li>
+</ul>
+<h5 id="主要代码-1"><a href="#主要代码-1" class="headerlink" title="主要代码"></a>主要代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (mImageWidth &lt; 200) &#123;</div><div class="line">            mGridWidth = mImageWidth/10;</div><div class="line">            mPathWidth = dp2px(3);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mImageWidth &lt; 500) &#123;</div><div class="line">            mGridWidth = mImageWidth/15;</div><div class="line">            mPathWidth = dp2px(10);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mGridWidth = mImageWidth/20;</div><div class="line">            mPathWidth = dp2px(20);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (mGridWidth &gt; 50) &#123;</div><div class="line">            mGridWidth = 50;</div><div class="line">            &#125;</div></pre></td></tr></table></figure>
+<h4 id="Bug3-马赛克页面图片显示比例失真"><a href="#Bug3-马赛克页面图片显示比例失真" class="headerlink" title="Bug3:马赛克页面图片显示比例失真"></a>Bug3:马赛克页面图片显示比例失真</h4><h5 id="问题描述-6"><a href="#问题描述-6" class="headerlink" title="问题描述"></a>问题描述</h5><p>原来的方案：没有按照图片原来宽高比的尺寸进行压缩或者拉伸，这样子对于有些图片显示出来就会有比例失真的问题</p>
+<h5 id="解决方案-6"><a href="#解决方案-6" class="headerlink" title="解决方案"></a>解决方案</h5><ul>
+<li>核心思路：图片无论如何都要按照原有图片的宽高比来进行缩放显示</li>
+<li>具体操作1：当宽&gt;高时，让宽充满View，再按照原始宽高比计算出新的高的值</li>
+<li>具体操作2：当高&gt;宽时，让高充满View，再按照原始宽高比计算出新的宽的值，<strong><code>例外情况</code></strong>：当计算出的新宽值大于View的宽值时，改变方式，让宽充满View，再按照原始宽高比计算出新的高的值</li>
+</ul>
+<h5 id="主要代码-2"><a href="#主要代码-2" class="headerlink" title="主要代码"></a>主要代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">        int contentWidth = right - left;</div><div class="line">        int contentHeight = bottom - top;</div><div class="line">        int viewWidth = contentWidth ;</div><div class="line">        int viewHeight = contentHeight ;</div><div class="line">        <span class="built_in">float</span> widthRatio = viewWidth / ((<span class="built_in">float</span>) mImageWidth);</div><div class="line">        <span class="built_in">float</span> heightRatio = viewHeight / ((<span class="built_in">float</span>) mImageHeight);</div><div class="line">        <span class="built_in">float</span> ratio = widthRatio &lt; heightRatio ? widthRatio : heightRatio;</div><div class="line">        int realWidth ,realHeight;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (mImageWidth &gt;= mImageHeight) &#123;</div><div class="line">            <span class="built_in">float</span> heightWidthRatio = mImageHeight / ((<span class="built_in">float</span>) mImageWidth);</div><div class="line">            realWidth = new BigDecimal(mImageWidth * widthRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line">            realHeight = new BigDecimal(realWidth * heightWidthRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line"></div><div class="line">            imageLeft = (contentWidth - realWidth) / 2;</div><div class="line">            imageRight = imageLeft + realWidth;</div><div class="line">            imageTop = (contentHeight - realHeight) / 2;</div><div class="line">            imageBottom = imageTop + realHeight;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">float</span> widthHeightRatio = mImageWidth / ((<span class="built_in">float</span>) mImageHeight);</div><div class="line">            realHeight = new BigDecimal(mImageHeight * heightRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line">            realWidth = new BigDecimal(realHeight * widthHeightRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (realWidth&lt;=contentWidth) &#123;</div><div class="line">                imageLeft = (contentWidth - realWidth) / 2;</div><div class="line">                imageRight = imageLeft + realWidth;</div><div class="line">                imageTop = (contentHeight - realHeight) / 2;</div><div class="line">                imageBottom = imageTop + realHeight;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="built_in">float</span> heightWidthRatio = mImageHeight / ((<span class="built_in">float</span>) mImageWidth);</div><div class="line">                realWidth = new BigDecimal(mImageWidth * widthRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line">                realHeight = new BigDecimal(realWidth * heightWidthRatio).setScale(0,BigDecimal.ROUND_HALF_UP).intValue();</div><div class="line"></div><div class="line">                imageLeft = (contentWidth - realWidth) / 2;</div><div class="line">                imageRight = imageLeft + realWidth;</div><div class="line">                imageTop = (contentHeight - realHeight) / 2;</div><div class="line">                imageBottom = imageTop + realHeight;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">mImageRect.set(imageLeft,imageTop,imageRight,imageBottom);</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/08/08/20150819-mme-v1.2.0-after-revision-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MME_v1.3.0_开发个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/14/20150714-mme-v1.2.0-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MME_v1.2.0_开发个人总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

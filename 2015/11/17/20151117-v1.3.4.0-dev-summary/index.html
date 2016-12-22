@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MME_v1.3.4.0_开发个人总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="照片按时间分组的实现分析这个版本新加了这样一个功能：照片按照时间进行分组排列，要实现这个功能，则需要让RecyclerView有两个ViewType，下面就来记录下同事实现的思路:
+
+在adapter类里重写getItemViewType方法，并用isParent方法判断类型，返回两个不同的类型:ITEM_VIEW_TYPE_PARENT和ITEM_VIEW_TYPE_CHILD
+在onCreat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MME_v1.3.4.0_开发个人总结">
+<meta property="og:url" content="http://yoursite.com/2015/11/17/20151117-v1.3.4.0-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="照片按时间分组的实现分析这个版本新加了这样一个功能：照片按照时间进行分组排列，要实现这个功能，则需要让RecyclerView有两个ViewType，下面就来记录下同事实现的思路:
+
+在adapter类里重写getItemViewType方法，并用isParent方法判断类型，返回两个不同的类型:ITEM_VIEW_TYPE_PARENT和ITEM_VIEW_TYPE_CHILD
+在onCreat">
+<meta property="og:updated_time" content="2016-12-22T07:08:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MME_v1.3.4.0_开发个人总结">
+<meta name="twitter:description" content="照片按时间分组的实现分析这个版本新加了这样一个功能：照片按照时间进行分组排列，要实现这个功能，则需要让RecyclerView有两个ViewType，下面就来记录下同事实现的思路:
+
+在adapter类里重写getItemViewType方法，并用isParent方法判断类型，返回两个不同的类型:ITEM_VIEW_TYPE_PARENT和ITEM_VIEW_TYPE_CHILD
+在onCreat">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20151117-v1.3.4.0-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MME_v1.3.4.0_开发个人总结
+    </h1>
+  
+
+        <a href="/2015/11/17/20151117-v1.3.4.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-11-17T12:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="照片按时间分组的实现分析"><a href="#照片按时间分组的实现分析" class="headerlink" title="照片按时间分组的实现分析"></a>照片按时间分组的实现分析</h2><p>这个版本新加了这样一个功能：<code>照片按照时间进行分组排列</code>，要实现这个功能，则需要让<code>RecyclerView</code>有两个<code>ViewType</code>，下面就来记录下同事实现的思路:</p>
+<ol>
+<li>在<code>adapter</code>类里重写<code>getItemViewType</code>方法，并用<code>isParent</code>方法判断类型，返回两个不同的类型:<code>ITEM_VIEW_TYPE_PARENT</code>和<code>ITEM_VIEW_TYPE_CHILD</code></li>
+<li>在<code>onCreateViewHolder</code>方法里，判断<code>viewType</code>，绘制不同xml里的view，然后返回不同的<code>ViewHolder</code></li>
+<li>在<code>onBindViewHolder</code>方法里，根据<code>ViewHolder</code>不同，执行不同的代码逻辑</li>
+<li><code>ItemViewType</code>是通过对<code>SecureAlbum</code>model用<code>setAdapterType</code>方法进行设置，然后根据不同位置，设置不同的<code>ItemViewType</code>，以便<code>adapter</code>可以根据不同类型生成不同的view</li>
+</ol>
+<a id="more"></a>
+<h2 id="拍照后照片截取部分进行保存"><a href="#拍照后照片截取部分进行保存" class="headerlink" title="拍照后照片截取部分进行保存"></a>拍照后照片截取部分进行保存</h2><p>这个版本中，因为上下部分由原来的半透明变成不透明，所以需求是：<code>拍照保存的图片大小是用户可见范围</code>，刚开始的思路是:<code>CameraPreview</code>不全屏放置，这样最终效果会将拍照后的照片进行了’拉长’，因为预览的图片被压缩，而拍出来的照片是正常进行保存，但是给用户的感觉是被’拉长了’。而如果想要正常显示，则需要对<code>CameraPreview</code>的<code>PreviewSize</code>进行重新计算，这样是对相机本身的显示比例进行调整，比较复杂。后来想到的方案是:</p>
+<ol>
+<li><code>对于拍照后的图片进行裁剪处理</code>，这里要特别注意的是:<strong><code>由于照片原始尺寸与屏幕尺寸不一致的，所以要对屏幕上需要裁剪的部分根据照片原始尺寸与屏幕尺寸比例进行换算，才是需要裁剪掉的真实大小</code></strong></li>
+<li>然后是对照片进行裁剪（如果有需要同时进行<code>翻转、镜像保存</code>），这里使用了<code>BitmapRegionDecoder</code>这个类的<code>decodeRegion</code>方法，传入参数<code>Rect</code>和<code>BitmapFactory.Options</code>，下面是具体代码实现:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//当照片是竖向时</div><div class="line"><span class="keyword">if</span> (temp.getHeight() &gt; temp.getWidth()) &#123;</div><div class="line"></div><div class="line">   double targetRatio = (double) temp.getHeight() / (double) OSUtil.getWindowHeight((Activity) mContext);</div><div class="line">   int top = (int) (targetRatio * mContext.getResources().getDimensionPixelSize(R.dimen.camera_actions_height));</div><div class="line">   int bottom = (int) (temp.getHeight() - targetRatio * mContext.getResources().getDimensionPixelSize(R.dimen.camera_bottom_layout_height));</div><div class="line">   Rect rect = new Rect(0, top, temp.getWidth(), bottom);</div><div class="line"></div><div class="line">   croppedImage = cropImage(rect, data);</div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  //当照片是横向时</div><div class="line">  double targetRatio = (double) temp.getWidth() / (double) OSUtil.getWindowHeight((Activity) mContext);</div><div class="line">  int left = (int) (targetRatio * mContext.getResources().getDimensionPixelSize(R.dimen.camera_actions_height));</div><div class="line">  int right = (int) (temp.getWidth() - targetRatio * mContext.getResources().getDimensionPixelSize(R.dimen.camera_bottom_layout_height));</div><div class="line">  Rect rect = new Rect(left, 0, right, temp.getHeight());</div><div class="line"></div><div class="line">  croppedImage = cropImage(rect, data);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">private Bitmap cropImage(Rect rect, byte[] data) &#123;</div><div class="line"></div><div class="line">  InputStream is;</div><div class="line">  Bitmap croppedImage = null;</div><div class="line">  Bitmap rotatedImage = null;</div><div class="line"></div><div class="line">  int degree = ExifUtil.getOrientation(data);</div><div class="line">  Matrix m = new Matrix();</div><div class="line">  m.postRotate(degree);</div><div class="line"></div><div class="line">  // 前置拍照图像镜像保存</div><div class="line">  <span class="keyword">if</span> (CameraController.isFrontFacing(cameraId)) &#123;</div><div class="line">       m.postScale(-1, 1);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  try &#123;</div><div class="line">       is = new ByteArrayInputStream(data);</div><div class="line">       BitmapRegionDecoder decoder = BitmapRegionDecoder.newInstance(is, <span class="literal">false</span>);</div><div class="line"></div><div class="line">       try &#123;</div><div class="line">            croppedImage = decoder.decodeRegion(rect, new BitmapFactory.Options());</div><div class="line">       &#125; catch (IllegalArgumentException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">       &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (null != croppedImage) &#123;</div><div class="line">            rotatedImage = Bitmap.createBitmap(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), m, <span class="literal">true</span>);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (null != rotatedImage &amp;&amp; rotatedImage != croppedImage) &#123;</div><div class="line">            <span class="built_in">return</span> rotatedImage;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">      <span class="built_in">return</span> croppedImage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>如果应用里面有全屏和非全屏的界面，则全屏跳转到非全屏之前就要将<code>statusbar</code>重新显示，否则在非全屏页面绘制结束后，调用显示<code>statusbar</code>代码时会重新进行<code>measure</code>和绘制操作，结果就是在5.0以上系统<code>RealTimePhotoActivity</code>里显示的图片会出现向下移动，这就是页面在重新<code>measure</code>后进行绘制的表现。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/11/17/20151117-v1.3.4.0-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/11/22/20151122-cross-the-GFW/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          爬墙思路总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MME_v1.3.2.1+v1.3.3.0_开发个人总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

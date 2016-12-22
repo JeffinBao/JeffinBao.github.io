@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>仿Smartisan OS图库快速选择功能 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Smartisan OS图库快速选择功能描述使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:
+
+只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突
+一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仿Smartisan OS图库快速选择功能">
+<meta property="og:url" content="http://yoursite.com/2015/11/24/20151124-drag-select-image-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="Smartisan OS图库快速选择功能描述使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:
+
+只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突
+一">
+<meta property="og:updated_time" content="2016-12-22T07:12:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="仿Smartisan OS图库快速选择功能">
+<meta name="twitter:description" content="Smartisan OS图库快速选择功能描述使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:
+
+只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突
+一">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20151124-drag-select-image-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      仿Smartisan OS图库快速选择功能
+    </h1>
+  
+
+        <a href="/2015/11/24/20151124-drag-select-image-summary/" class="archive-article-date">
+  	<time datetime="2015-11-24T07:34:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Smartisan-OS图库快速选择功能描述"><a href="#Smartisan-OS图库快速选择功能描述" class="headerlink" title="Smartisan OS图库快速选择功能描述"></a>Smartisan OS图库快速选择功能描述</h2><p>使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:</p>
+<ol>
+<li>只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突</li>
+<li>一开始滑动时，到第二个位置才会<code>将第一个和第二个位置下的图片一起进行操作（选中或清除）</code>，此后都是滑到哪个位置操作到哪个位置（滑动方向没有变化的情况）</li>
+<li>如果滑动方向改变了（例如本来的方向是朝着位置不断变大滑，突然转向，朝着位置变小滑，此时认为它滑动方向变化），然后就是对上一个位置进行操作</li>
+<li>如果<code>滑动到的位置与上一个位置之差绝对值大于1</code>，则需要对两个位置中间的位置进行操作，如果有转向，则传入的位置参数也会有不同</li>
+<li>滑动到屏幕上下边界的时候，视图会自动滚动</li>
+<li>可以记录每一次滑动的初始目的，是要进行<code>选中</code>还是<code>清除</code>操作，如果进行的是<code>选中</code>操作，则在滑动过程中遇到已经选中的图片，就不会对它进行清除操作</li>
+</ol>
+<a id="more"></a>
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><p>下面就针对这个快速选择功能，记录下我的实现过程</p>
+<h3 id="第一步-手势操作"><a href="#第一步-手势操作" class="headerlink" title="第一步:手势操作"></a>第一步:手势操作</h3><p>实现这个功能的第一步就是识别我们手在屏幕上滑动，并且知道实时的位置在哪里。Android自带的<code>GestureDetector</code>类可以帮助我们实现监听手势操作，在初始化时，创建<code>GestureDetector</code>对象:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gestureDetector = new GestureDetector(this, new FastSelectGestureListener());</div></pre></td></tr></table></figure>
+<p><code>FastSelectGestureListener</code>是继承<code>GestureDector.SimpleOnGestureListener</code>，实现手势监听的一个类，并且重写了<code>onDown</code>和<code>onScroll</code>方法，<code>onDown</code>方法在手指落下接触屏幕的时候只调用一个，而<code>onScroll</code>方法是在手指滑动的时候不断调用，直到手指离开屏幕结束此次手势操作。在这两个方法里，也是进行图片操作的具体逻辑。</p>
+<p>给<code>recyclerView</code>添加<code>OnItemTouchListener</code>监听，并且在<code>onInterceptTouchEvent</code>方法里，添加手势触摸事情，让系统去接收，具体代码如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gestureDetector.onTouchEvent(e);</div><div class="line"><span class="keyword">if</span> (e.getAction() == MotionEvent.ACTION_UP) &#123;</div><div class="line">    dragSelectEnable = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (dragSelectEnable) &#123;</div><div class="line">    recyclerView.stopScroll();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<h3 id="第二步-找到当前手指触摸位置下的view和position"><a href="#第二步-找到当前手指触摸位置下的view和position" class="headerlink" title="第二步:找到当前手指触摸位置下的view和position"></a>第二步:找到当前手指触摸位置下的view和position</h3><p>在<code>RecyclerView</code>里，<code>findChildViewUnder</code>方法可以通过坐标来获得View，具体实现如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">View view = recyclerView.findChildViewUnder(e.getX(), e.getY());</div></pre></td></tr></table></figure>
+<p><code>e</code>是<code>MotionEvent</code>。<br>当<code>null != view</code>情况下，可以通过<code>getChildAdapterPosition()</code>方法获取view在adapter里的<code>position</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">position = recyclerView.getChildAdapterPosition(view);</div></pre></td></tr></table></figure>
+<h3 id="第三步-具体逻辑实现"><a href="#第三步-具体逻辑实现" class="headerlink" title="第三步:具体逻辑实现"></a>第三步:具体逻辑实现</h3><h4 id="onDown方法初始化参数"><a href="#onDown方法初始化参数" class="headerlink" title="onDown方法初始化参数"></a>onDown方法初始化参数</h4><p>每一次手势操作，都需要对于参数进行重新赋值，具体代码如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">View view = recyclerView.findChildViewUnder(e.getX(), e.getY());</div><div class="line"><span class="keyword">if</span> (null != view) &#123;</div><div class="line">    initialPosition = recyclerView.getChildAdapterPosition(view);</div><div class="line">    lastPosition = initialPosition;</div><div class="line">    selectInitialPositionFlag = <span class="literal">true</span>;</div><div class="line">    positionFlag = <span class="literal">false</span>;</div><div class="line">    positionTrend = 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">return</span> super.onDown(e);</div></pre></td></tr></table></figure>
+<h4 id="只有横向滑动才能激活选择图片操作"><a href="#只有横向滑动才能激活选择图片操作" class="headerlink" title="只有横向滑动才能激活选择图片操作"></a>只有横向滑动才能激活选择图片操作</h4><p>因为竖向滑动是对recyclerView进行滚动，所以只有横向滑动才能激活快速选择模式，否则不对图片进行操作:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//only horizontal gesture can active drag select image mode</div><div class="line"><span class="keyword">if</span> (Math.abs(e1.getX() - e2.getX()) &gt; FAST_SELECT_ACTIVE_X_DISTANCE &amp;&amp; Math.abs(e1.getY() - e2.getY()) &lt; FAST_SELECT_ACTIVE_Y_DISTANCE) &#123;</div><div class="line">    dragSelectEnable = <span class="literal">true</span>;</div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!dragSelectEnable)</div><div class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>FAST_SELECT_ACTIVE_X_DISTANCE</code>和<code>FAST_SELECT_ACTIVE_Y_DISTANCE</code>分别是激活快速选择模式X轴和Y轴位移的阀值，</p>
+<h4 id="每一次转向对于一些参数都要重新赋值"><a href="#每一次转向对于一些参数都要重新赋值" class="headerlink" title="每一次转向对于一些参数都要重新赋值"></a>每一次转向对于一些参数都要重新赋值</h4><p>由于每一次转向，都需要传入不同的位置参数给<code>performGalleryItemCheck</code>方法，所以需要对参数进行重置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//positionFlag updates when gesture direction is changed</div><div class="line">if (((position - lastPosition) &gt; 0 &amp;&amp; positionTrend &lt;= 0)</div><div class="line">        || ((position - lastPosition) &lt; 0 &amp;&amp; positionTrend &gt;= 0)) &#123;</div><div class="line">    positionFlag = !positionFlag;</div><div class="line">    selectOrClearFlag = adapter.getItemSelectedState(lastPosition);</div><div class="line">    positionTrend = position - lastPosition;</div><div class="line">    selectInitialPositionFlag = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="进行选择操作"><a href="#进行选择操作" class="headerlink" title="进行选择操作"></a>进行选择操作</h4><p>一共分为以下三种情况:</p>
+<ul>
+<li>当前位置与上一个位置之差绝对值为1</li>
+<li>当前位置减去上一个位置大于1</li>
+<li>当前位置减去上一个位置小于1</li>
+</ul>
+<p>分成三种情况，也就是三种情况分别传入的位置参数都是不同的，具体代码如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Math.abs(lastPosition - position) == 1) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (position == initialPosition) &#123;</div><div class="line">        performGalleryItemCheck(initialPosition);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (positionFlag) &#123;</div><div class="line">        performGalleryItemCheck(position);</div><div class="line"></div><div class="line">        //check initialPosition only once when everytime starting drag select image</div><div class="line">        <span class="keyword">if</span> (selectInitialPositionFlag &amp;&amp; Math.abs(position - initialPosition) == 1) &#123;</div><div class="line">            performGalleryItemCheck(initialPosition);</div><div class="line">            selectInitialPositionFlag = <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        performGalleryItemCheck(lastPosition);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> ((lastPosition - position) &gt; 1) &#123;</div><div class="line">    <span class="keyword">if</span> (positionFlag) &#123;</div><div class="line">        <span class="keyword">for</span> (int i = position; i &lt; lastPosition; i++) &#123;</div><div class="line">            performGalleryItemCheck(i);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">for</span> (int i = position + 1; i &lt;= lastPosition; i++) &#123;</div><div class="line">            performGalleryItemCheck(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> (positionFlag) &#123;</div><div class="line">        <span class="keyword">for</span> (int i = lastPosition + 1; i &lt;= position; i++) &#123;</div><div class="line">            performGalleryItemCheck(i);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">for</span> (int i = lastPosition; i &lt; position; i++) &#123;</div><div class="line">            performGalleryItemCheck(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// update lastPosition</div><div class="line">lastPosition = position;</div></pre></td></tr></table></figure>
+<h4 id="添加自动滚动"><a href="#添加自动滚动" class="headerlink" title="添加自动滚动"></a>添加自动滚动</h4><p>当手势操作在上下边界时，实现自动滚动的进行选择的效果。</p>
+<p><code>RecylerViewAutoScrollHelper</code>类继承了<code>AutoScrollHelper</code>类，传入<code>recyclerView</code>作为这个<code>helper</code>的对象，具体实现代码如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">RecyclerViewAutoScrollHelper helper = </div><div class="line">          new RecyclerViewAutoScrollHelper(recyclerView);</div><div class="line">recyclerView.setOnTouchListener(helper);</div><div class="line">helper.setEnabled(<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p>在<code>RecyclerViewAutoScrollHelper</code>类里，让<code>recyclerView</code>实现自动滚动，并且控制滚动的速度。</p>
+<h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p>具体的代码，已经开源到GitHub，如有兴趣，请通过<a href="https://github.com/JeffinBao/DragSelectImageDemo" target="_blank" rel="external">这个链接查看</a>，谢谢观看。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/11/24/20151124-drag-select-image-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          《思考，快与慢》读书笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/22/20151122-cross-the-GFW/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">爬墙思路总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

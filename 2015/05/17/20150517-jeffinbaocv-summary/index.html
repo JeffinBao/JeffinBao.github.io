@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>JeffinBaoCV--个人简历开发总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="开发思路由于之前在网上看到了这样一份简历：作者把自己的经历采用类似于地图搜路径的方式呈现了出来，大致排版与Google Map很像，左边是模拟搜索后的文字版路径，右边则是地图中各个关键节点，一页纸就把自己的经历以一种很巧妙的形式展现了出来。当时看了之后，觉得作者很有创意，接着就自己在琢磨，他的简历最终是静态的pdf或者word形式，既然是以地图搜索的形式，能不能动态展现自己的经历呢：点击左边的某个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JeffinBaoCV--个人简历开发总结">
+<meta property="og:url" content="http://yoursite.com/2015/05/17/20150517-jeffinbaocv-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="开发思路由于之前在网上看到了这样一份简历：作者把自己的经历采用类似于地图搜路径的方式呈现了出来，大致排版与Google Map很像，左边是模拟搜索后的文字版路径，右边则是地图中各个关键节点，一页纸就把自己的经历以一种很巧妙的形式展现了出来。当时看了之后，觉得作者很有创意，接着就自己在琢磨，他的简历最终是静态的pdf或者word形式，既然是以地图搜索的形式，能不能动态展现自己的经历呢：点击左边的某个">
+<meta property="og:updated_time" content="2016-12-22T06:39:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JeffinBaoCV--个人简历开发总结">
+<meta name="twitter:description" content="开发思路由于之前在网上看到了这样一份简历：作者把自己的经历采用类似于地图搜路径的方式呈现了出来，大致排版与Google Map很像，左边是模拟搜索后的文字版路径，右边则是地图中各个关键节点，一页纸就把自己的经历以一种很巧妙的形式展现了出来。当时看了之后，觉得作者很有创意，接着就自己在琢磨，他的简历最终是静态的pdf或者word形式，既然是以地图搜索的形式，能不能动态展现自己的经历呢：点击左边的某个">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20150517-jeffinbaocv-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JeffinBaoCV--个人简历开发总结
+    </h1>
+  
+
+        <a href="/2015/05/17/20150517-jeffinbaocv-summary/" class="archive-article-date">
+  	<time datetime="2015-05-17T08:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="开发思路"><a href="#开发思路" class="headerlink" title="开发思路"></a>开发思路</h3><p>由于之前在网上看到了这样一份简历：作者把自己的经历采用类似于地图搜路径的方式呈现了出来，大致排版与Google Map很像，左边是模拟搜索后的文字版路径，右边则是地图中各个关键节点，一页纸就把自己的经历以一种很巧妙的形式展现了出来。当时看了之后，觉得作者很有创意，接着就自己在琢磨，他的简历最终是静态的pdf或者word形式，既然是以地图搜索的形式，能不能动态展现自己的经历呢：点击左边的某个具体点，右边地图上会有反馈，并且点击点图上的节点，会有该阶段个人的一个详细经历。</p>
+<p>想要有这样的效果，在网页上呈现，那html，js，css知识肯定是必不可少的。由于自己对于Android开发的兴趣比较大，初学编程接触的也是Java和Android，所以后来的想法就是，这样一份简历能不能最终以APP的形式呈现出来。</p>
+<p>有了想法的改变后，如何实现是接下来思考的问题。考虑到手机屏幕较小，原本在电脑端可以以一个版面呈现的简历在手机上要分成这样几个界面：</p>
+<ul>
+<li>初始搜索界面（类似于地图首页搜索）</li>
+<li>路径（人生经历）呈现界面</li>
+<li>每个人生阶段的地图界面</li>
+<li>该人生阶段的具体介绍界面</li>
+</ul>
+<p>上面的想法是借鉴手机上地图应用的逻辑：进入应用会有搜索框，搜索之后给出多重路径规划，针对某个路径会有具体的导航。至于该人生阶段的具体介绍界面，则会通过点击地图上的Marker来呈现一个界面。</p>
+<a id="more"></a>
+<h3 id="具体实现过程"><a href="#具体实现过程" class="headerlink" title="具体实现过程"></a>具体实现过程</h3><h4 id="初始搜索界面"><a href="#初始搜索界面" class="headerlink" title="初始搜索界面"></a>初始搜索界面</h4><p>1.输入“包建峰”，点击“搜索”按钮。这个操作背后会有这样几个动作：</p>
+<ul>
+<li>在地图上绘制全部路径和Marker，想要达到在地图上整体呈现我的人生轨迹的效果</li>
+<li>将后续要用到的数据分类存入数据库中，包括地点名称、经纬度、人生经历的具体描述</li>
+<li>出现一个圆形“出发”按钮，点击后可以进入“路径（人生经历）呈现界面”</li>
+</ul>
+<p>2.第一个界面没有较大难点，动画效果也只有地图从远到近的缩放效果</p>
+<h4 id="路径（人生经历）呈现界面"><a href="#路径（人生经历）呈现界面" class="headerlink" title="路径（人生经历）呈现界面"></a>路径（人生经历）呈现界面</h4><p>1.采用ScrollView并且里面有多层嵌套的LinearLayout来完成横向竖向都有的内容布局，主要内容是个人在每个地点的主要学习和工作职责。</p>
+<p>2.每个地点都有一个点击事件，分别指向地图界面对应的城市位置</p>
+<h4 id="每个人生阶段的地图界面"><a href="#每个人生阶段的地图界面" class="headerlink" title="每个人生阶段的地图界面"></a>每个人生阶段的地图界面</h4><p>1.上一个Activity的不同点击事件会传来不同的Integer值，由此Integer值判断地图界面应该处于哪个城市，进而移动到目标位置区域并画上Marker</p>
+<p>2.ViewPager可以让地图顶端的地点进行左右滑动，以此来出发地图上位置的改变，注意这里要重写<strong><code>ViewPager.OnPageChangeListener</code></strong>中的<strong><code>onPageSelected</code></strong>方法，而<strong><code>PlaceHolderFragment</code></strong>类中的<strong><code>onCreateView</code></strong>方法仅仅是用来加载ViewPager上的内容，并且会预加载下一个或者上一个view,position最后的值不是当前位置，所以不适合在该方法里面触发位置改变。</p>
+<p>  3.除了滑动操作之外，也可以点击左右的箭头按钮前进到下一个地点或后退到上一个地点。需要注意的是当地点处于起点或者终点时，只有向前按钮或者只有后退按钮，这个逻辑判断请见下面一段代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">currentPageId=arg0;</div><div class="line"><span class="keyword">if</span> (currentPageId==0) &#123;</div><div class="line">	imageButtonLeft.setVisibility(View.INVISIBLE);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentPageId==5) &#123;</div><div class="line">	imageButtonRight.setVisibility(View.INVISIBLE);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	imageButtonLeft.setVisibility(View.VISIBLE);</div><div class="line">	imageButtonRight.setVisibility(View.VISIBLE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.Marker点击事件，会跳转到Dialog样式的Activity里，呈现在该地点的具体个人经历</p>
+<h4 id="该人生阶段的具体介绍界面"><a href="#该人生阶段的具体介绍界面" class="headerlink" title="该人生阶段的具体介绍界面"></a>该人生阶段的具体介绍界面</h4><p>1.虽然是Activity，但是想要一种临时弹出Dialog的效果，所以就自定义了Activity的大小，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">WindowManager wm = getWindowManager();</div><div class="line">Display d = wm.getDefaultDisplay();</div><div class="line">		</div><div class="line">LayoutParams lp = getWindow().getAttributes();</div><div class="line">lp.width = (int)(d.getWidth() * 0.88);</div><div class="line">lp.height = (int)(d.getHeight() * 0.7);</div><div class="line">lp.y = 100;</div><div class="line">getWindow().setGravity(Gravity.CENTER);</div><div class="line">getWindow().setAttributes(lp);</div></pre></td></tr></table></figure>
+<p>2.由于同时使用了ListView和ScrollView会造成冲突，所以写了一个<strong><code>MyListView</code></strong>继承ListView，并且重写了ListView的<strong><code>onMeasure</code></strong>方法，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec) &#123;</div><div class="line">		int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE&gt;&gt;2, MeasureSpec.AT_MOST);</div><div class="line">		super.onMeasure(widthMeasureSpec, expandSpec);</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<p>3.为了<strong>主要任务</strong>和<strong>达成情况</strong>滚动到顶部时有悬停的效果，需要写一个<strong><code>StickyScrollView</code></strong>继承ScrollView。代码请看<a href="https://github.com/JeffinBao/JeffinBaoCV" target="_blank" rel="external">JeffinBaoCV</a>中的<strong><code>StickyScrollView.java</code></strong></p>
+<h3 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h3><p>1.<strong><code>BaseTransformer.java</code></strong>里面的<strong><code>onPreTransform</code></strong>方法需要进一步理解体会</p>
+<p>2.<strong><code>MyListView.java</code></strong>里面<strong><code>onMeasure</code></strong>方法中<strong><code>Integer.MAX_VALUE&gt;&gt;2</code></strong>的作用？</p>
+<p>3.<strong><code>StickyScrollView</code></strong>里面<strong><code>showStickyView</code></strong>方法需要进一步理解体会</p>
+<p>4.<strong><code>StickyScrollView</code></strong>里面第一个构造函数为什么要用<strong><code>this(context,attrs,0);</code></strong>,有什么具体作用吗？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/05/17/20150517-jeffinbaocv-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/07/14/20150714-mme-v1.2.0-dev-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MME_v1.2.0_开发个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/28/20150428-O2O-hard-points-and-marketing-plan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">O2O行业下沉难点与可能的推广方式--三四线城市</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

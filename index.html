@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java/Android Developer, Love reading and thinking">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jeffin's Blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="Java/Android Developer, Love reading and thinking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jeffin's Blog">
+<meta name="twitter:description" content="Java/Android Developer, Love reading and thinking">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+  
+    <article id="post-20160424-research-on-java-memory-overweighted" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/24/20160424-research-on-java-memory-overweighted/">记一次Java内存占用过大排查</a>
+    </h1>
+  
+
+        <a href="/2016/04/24/20160424-research-on-java-memory-overweighted/" class="archive-article-date">
+  	<time datetime="2016-04-24T13:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近公司要上线一个Java后台服务，在最后性能测试的时候发现，高并发条件下，该服务内存占用居高不下（跑10个小时以上能飙到4G）。这样奇高的内存占用肯定是无法接受的，所以需要排查到底是哪里出问题了。</p>
+        
+          <a class="article-more-a" href="/2016/04/24/20160424-research-on-java-memory-overweighted/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2016-02-26-colorful-notes-v1.0.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/27/2016-02-26-colorful-notes-v1.0.0-dev-summary/">多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结</a>
+    </h1>
+  
+
+        <a href="/2016/02/27/2016-02-26-colorful-notes-v1.0.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2016-02-27T05:28:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-27</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库方面"><a href="#数据库方面" class="headerlink" title="数据库方面"></a>数据库方面</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: <code>GreenDao</code>、<code>OrmLite</code>、<code>Afinal中的FinalDb</code>、<code>Realm</code>等等。这次我采用的是<code>FinalDb</code>这个框架来进行数据的本地存储。下一款应用我打算用<code>Realm</code>或者<code>GreenDao</code>来做数据存储，之后也可以对比下这几个框架的优劣。下面我会记录一些我在使用<code>FinalDb</code>这个框架时候遇到的一些问题和总结。另外，<code>FinalDb</code>框架的增删改查源码分析会抽空专门写一篇来进行研究。</p>
+        
+          <a class="article-more-a" href="/2016/02/27/2016-02-26-colorful-notes-v1.0.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20160124-secret-of-silicon-valley-read-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/">《硅谷之谜》读书笔记</a>
+    </h1>
+  
+
+        <a href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/" class="archive-article-date">
+  	<time datetime="2016-01-24T06:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h2><ul>
+<li>P23—虽然嬉皮士给人的印象通常是年轻人过度开放乃至乱来，比如穿着破损的牛仔裤、吸毒、滥交，但这都只是嬉皮士的表象，<code>其深层埋藏着对传统价值观和思维方式的反叛，那些奇怪的表象实际上反映出年轻人试图树立自我意识却又迷茫的心态。对上一辈建立在有秩序的工业文明中的那种一板一眼的做事方式，以及在生活中保守中庸一丝不苟的价值观，嬉皮士们并不认同，他们尤其反对西方二战后的一代人所具有的那种冷战思维方式。嬉皮士们在思想上讲究平等和自由，并且以此探索新的价值观，在艺术创作上则通过吸毒等方式试图寻找灵感，尝试前所未有的创作。在个人行为上，他们试图通过标新立异来吸引社会注意，他们强调自我，很少仿照他人。这些人通常不追求物质享受，却在食不果腹时心怀世界。今天，在很多硅谷的公司里，包括苹果、Google和Facebook依然能够看到嬉皮士文化的影子。</code></li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20160116-thinking-fast-and-slow-reading-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/">《思考，快与慢》读书笔记</a>
+    </h1>
+  
+
+        <a href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/" class="archive-article-date">
+  	<time datetime="2016-01-16T12:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一部分：系统1-系统2"><a href="#第一部分：系统1-系统2" class="headerlink" title="第一部分：系统1,系统2"></a>第一部分：系统1,系统2</h2><h3 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h3><ul>
+<li>P9—系统1和系统2的分工非常高效：代价最小，效果最好。通常情况下，这种分工很有效，因为系统1很善于完成自己的本职工作：它在熟悉情境中采取的模式是精确的，所作出的短期预测是准确的，遇到挑战时做出的第一反应也是迅速且基本恰当的。然而，系统1存在成见，在很多特定的情况下，这一系统易犯系统性错误。<code>你会发现这个系统有时候会将原本较难的问题作简单化处理</code>，对于<code>逻辑学和统计学问题</code>，它几乎一无所知。系统1还有一个更大的局限，即我们无法关闭它。如果看到屏幕上显示一个你认识的单词，你就能读出这个词。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151124-drag-select-image-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/24/20151124-drag-select-image-summary/">仿Smartisan OS图库快速选择功能</a>
+    </h1>
+  
+
+        <a href="/2015/11/24/20151124-drag-select-image-summary/" class="archive-article-date">
+  	<time datetime="2015-11-24T07:34:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Smartisan-OS图库快速选择功能描述"><a href="#Smartisan-OS图库快速选择功能描述" class="headerlink" title="Smartisan OS图库快速选择功能描述"></a>Smartisan OS图库快速选择功能描述</h2><p>使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:</p>
+<ol>
+<li>只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突</li>
+<li>一开始滑动时，到第二个位置才会<code>将第一个和第二个位置下的图片一起进行操作（选中或清除）</code>，此后都是滑到哪个位置操作到哪个位置（滑动方向没有变化的情况）</li>
+<li>如果滑动方向改变了（例如本来的方向是朝着位置不断变大滑，突然转向，朝着位置变小滑，此时认为它滑动方向变化），然后就是对上一个位置进行操作</li>
+<li>如果<code>滑动到的位置与上一个位置之差绝对值大于1</code>，则需要对两个位置中间的位置进行操作，如果有转向，则传入的位置参数也会有不同</li>
+<li>滑动到屏幕上下边界的时候，视图会自动滚动</li>
+<li>可以记录每一次滑动的初始目的，是要进行<code>选中</code>还是<code>清除</code>操作，如果进行的是<code>选中</code>操作，则在滑动过程中遇到已经选中的图片，就不会对它进行清除操作</li>
+</ol>
+        
+          <a class="article-more-a" href="/2015/11/24/20151124-drag-select-image-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151122-cross-the-GFW" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/20151122-cross-the-GFW/">爬墙思路总结</a>
+    </h1>
+  
+
+        <a href="/2015/11/22/20151122-cross-the-GFW/" class="archive-article-date">
+  	<time datetime="2015-11-22T07:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对<strong><code>MAC OS</code></strong>，并且需要一定的Linux操作指令基础，因为像<code>cd</code>、<code>ls</code>等指令都是基础的Linux指令，在操作过程中都需要用到。</p>
+        
+          <a class="article-more-a" href="/2015/11/22/20151122-cross-the-GFW/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技能/">实用技能</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151117-v1.3.4.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/17/20151117-v1.3.4.0-dev-summary/">MME_v1.3.4.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/11/17/20151117-v1.3.4.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-11-17T12:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="照片按时间分组的实现分析"><a href="#照片按时间分组的实现分析" class="headerlink" title="照片按时间分组的实现分析"></a>照片按时间分组的实现分析</h2><p>这个版本新加了这样一个功能：<code>照片按照时间进行分组排列</code>，要实现这个功能，则需要让<code>RecyclerView</code>有两个<code>ViewType</code>，下面就来记录下同事实现的思路:</p>
+<ol>
+<li>在<code>adapter</code>类里重写<code>getItemViewType</code>方法，并用<code>isParent</code>方法判断类型，返回两个不同的类型:<code>ITEM_VIEW_TYPE_PARENT</code>和<code>ITEM_VIEW_TYPE_CHILD</code></li>
+<li>在<code>onCreateViewHolder</code>方法里，判断<code>viewType</code>，绘制不同xml里的view，然后返回不同的<code>ViewHolder</code></li>
+<li>在<code>onBindViewHolder</code>方法里，根据<code>ViewHolder</code>不同，执行不同的代码逻辑</li>
+<li><code>ItemViewType</code>是通过对<code>SecureAlbum</code>model用<code>setAdapterType</code>方法进行设置，然后根据不同位置，设置不同的<code>ItemViewType</code>，以便<code>adapter</code>可以根据不同类型生成不同的view</li>
+</ol>
+        
+          <a class="article-more-a" href="/2015/11/17/20151117-v1.3.4.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/">MME_v1.3.2.1+v1.3.3.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-10-26T06:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于网络请求"><a href="#关于网络请求" class="headerlink" title="关于网络请求"></a>关于网络请求</h2><p>在开发v1.3.2.1版本时，新增了这样一个需求：<code>在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示</code>。具体分到给我的任务是：<code>如果有新图片需要下载的时候，下载下来保存到本地</code>。由于我们的项目网络请求时采用<code>async-http-client</code>开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校验这一步骤，不过由于此前版本做图片上传功能时已经做过类似的签名校验，这一部分也没有耽误什么时间。准备工作都做完之后，测试的时候，发现发起请求成功，服务端也有数据返回（这里使用Charles这个神器来进行数据抓包的），但是程序就是没法解析出数据。</p>
+        
+          <a class="article-more-a" href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20150928-mme-v1.3.1+2-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/">MME_v1.3.1+v1.3.2_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-09-13T05:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android5-0相关"><a href="#Android5-0相关" class="headerlink" title="Android5.0相关"></a>Android5.0相关</h2><h3 id="点按水波纹效果的属性设置"><a href="#点按水波纹效果的属性设置" class="headerlink" title="点按水波纹效果的属性设置"></a>点按水波纹效果的属性设置</h3><p>Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：</p>
+<ul>
+<li>水波纹效果会超过控件的边界：<strong><code>android:background=&quot;?android:attr/selectableItemBackgroundBorderless&quot;</code></strong></li>
+<li>水波纹效果在控件边界里面：<strong><code>android:background=&quot;?android:attr/selectableItemBackground&quot;</code></strong></li>
+</ul>
+<p>如果直接使用第一种，在5.0以上的系统可以运行，但是5.0以下系统因为没有这个属性，所以程序会出现崩溃，刚开始的解决方案是新建<strong><code>values-v21</code></strong>的资源文件夹，在里面的<strong><code>styles</code></strong>用第一种属性；在<strong><code>values</code></strong>里的<strong><code>styles</code></strong>用第二种属性，这样就可以解决兼容的问题。<br>后来发现一种不用设置两种属性的方式，直接在属性里面设置<strong><code>android:background=&quot;?attr/selectableItemBackgroundBorderless</code></strong>，这句代码的意思是：<strong>如果控件背景属性支持Borderless的，就用Borderless，如果没有，则自动进行兼容</strong>。</p>
+        
+          <a class="article-more-a" href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20150830-mme-v1.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/">MME_v1.3.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-08-30T13:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-30</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="图片上传功能"><a href="#图片上传功能" class="headerlink" title="图片上传功能"></a>图片上传功能</h3><h4 id="图片上传流程"><a href="#图片上传流程" class="headerlink" title="图片上传流程"></a>图片上传流程</h4><ul>
+<li>采用<strong><code>application/octet-stream</code></strong>的格式上传文件，所以要拿到要上传的图片的临时路径，完成上传操作后（不管是否上传成功），都删除这个临时路径，避免系统存储过多无用文件</li>
+<li>将文件当作参数，放入<strong><code>RequestParams</code></strong>对象中去</li>
+<li>这里采用的是<strong><code>put</code></strong>方法进行上传，上传操作用的是<strong><code>android-async-http</code></strong>这个开源框架</li>
+<li>服务器的返回操作在<strong><code>JsonHttpRespnseHandler</code></strong>里面处理：如果成功，返回一个Json数据，里面包含一个url；如果失败，则提示<strong>网络不佳，请重新上传</strong></li>
+</ul>
+        
+          <a class="article-more-a" href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
