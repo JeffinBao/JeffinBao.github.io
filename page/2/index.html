@@ -139,6 +139,63 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-20150830-mme-v1.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/">MME_v1.3.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-08-30T13:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-30</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="图片上传功能"><a href="#图片上传功能" class="headerlink" title="图片上传功能"></a>图片上传功能</h3><h4 id="图片上传流程"><a href="#图片上传流程" class="headerlink" title="图片上传流程"></a>图片上传流程</h4><ul>
+<li>采用<strong><code>application/octet-stream</code></strong>的格式上传文件，所以要拿到要上传的图片的临时路径，完成上传操作后（不管是否上传成功），都删除这个临时路径，避免系统存储过多无用文件</li>
+<li>将文件当作参数，放入<strong><code>RequestParams</code></strong>对象中去</li>
+<li>这里采用的是<strong><code>put</code></strong>方法进行上传，上传操作用的是<strong><code>android-async-http</code></strong>这个开源框架</li>
+<li>服务器的返回操作在<strong><code>JsonHttpRespnseHandler</code></strong>里面处理：如果成功，返回一个Json数据，里面包含一个url；如果失败，则提示<strong>网络不佳，请重新上传</strong></li>
+</ul>
+        
+          <a class="article-more-a" href="/2015/08/30/20150830-mme-v1.3.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-20150819-mme-v1.2.0-after-revision-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
