@@ -139,6 +139,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/">MME_v1.3.2.1+v1.3.3.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-10-26T06:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于网络请求"><a href="#关于网络请求" class="headerlink" title="关于网络请求"></a>关于网络请求</h2><p>在开发v1.3.2.1版本时，新增了这样一个需求：<code>在某些节日，应用需要从服务端下载对应的启动页(Splash)图片并在特定的时间内显示</code>。具体分到给我的任务是：<code>如果有新图片需要下载的时候，下载下来保存到本地</code>。由于我们的项目网络请求时采用<code>async-http-client</code>开源框架，这个功能自然也会继续沿用这个框架。如果单纯用这个框架进行开发，是很容易实现的，但是我们对于发起的请求加了签名校验这一步骤，不过由于此前版本做图片上传功能时已经做过类似的签名校验，这一部分也没有耽误什么时间。准备工作都做完之后，测试的时候，发现发起请求成功，服务端也有数据返回（这里使用Charles这个神器来进行数据抓包的），但是程序就是没法解析出数据。</p>
+        
+          <a class="article-more-a" href="/2015/10/26/20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20150928-mme-v1.3.1+2-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/">MME_v1.3.1+v1.3.2_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-09-13T05:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android5-0相关"><a href="#Android5-0相关" class="headerlink" title="Android5.0相关"></a>Android5.0相关</h2><h3 id="点按水波纹效果的属性设置"><a href="#点按水波纹效果的属性设置" class="headerlink" title="点按水波纹效果的属性设置"></a>点按水波纹效果的属性设置</h3><p>Android5.0系统以后，为了让数字世界更加贴近于真实的物理世界，在点击控件时，可以设置水波纹效果，这个动画被认为是数字世界对物理世界的还原与致敬。对于程序来说，只要给控件设置下面两句属性，就可以有点击水波纹效果：</p>
+<ul>
+<li>水波纹效果会超过控件的边界：<strong><code>android:background=&quot;?android:attr/selectableItemBackgroundBorderless&quot;</code></strong></li>
+<li>水波纹效果在控件边界里面：<strong><code>android:background=&quot;?android:attr/selectableItemBackground&quot;</code></strong></li>
+</ul>
+<p>如果直接使用第一种，在5.0以上的系统可以运行，但是5.0以下系统因为没有这个属性，所以程序会出现崩溃，刚开始的解决方案是新建<strong><code>values-v21</code></strong>的资源文件夹，在里面的<strong><code>styles</code></strong>用第一种属性；在<strong><code>values</code></strong>里的<strong><code>styles</code></strong>用第二种属性，这样就可以解决兼容的问题。<br>后来发现一种不用设置两种属性的方式，直接在属性里面设置<strong><code>android:background=&quot;?attr/selectableItemBackgroundBorderless</code></strong>，这句代码的意思是：<strong>如果控件背景属性支持Borderless的，就用Borderless，如果没有，则自动进行兼容</strong>。</p>
+        
+          <a class="article-more-a" href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-20150830-mme-v1.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -455,7 +564,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 Jeffin
+    		&copy; 2017 Jeffin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
