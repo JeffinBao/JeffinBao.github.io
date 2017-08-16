@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库方面概述由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: GreenDao、OrmLite、Afinal中的FinalDb、Realm等等。这次我采用的是FinalDb这个框架来进行数据的本地存储。下一款应用我打算用Realm或者GreenDao来做数据存储，之后也可以对比下这几个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结">
+<meta property="og:url" content="http://yoursite.com/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="数据库方面概述由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: GreenDao、OrmLite、Afinal中的FinalDb、Realm等等。这次我采用的是FinalDb这个框架来进行数据的本地存储。下一款应用我打算用Realm或者GreenDao来做数据存储，之后也可以对比下这几个">
+<meta property="og:updated_time" content="2016-12-22T07:13:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结">
+<meta name="twitter:description" content="数据库方面概述由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: GreenDao、OrmLite、Afinal中的FinalDb、Realm等等。这次我采用的是FinalDb这个框架来进行数据的本地存储。下一款应用我打算用Realm或者GreenDao来做数据存储，之后也可以对比下这几个">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20160226-colorful-notes-v1.0.0-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结
+    </h1>
+  
+
+        <a href="/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2016-02-27T05:28:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库方面"><a href="#数据库方面" class="headerlink" title="数据库方面"></a>数据库方面</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: <code>GreenDao</code>、<code>OrmLite</code>、<code>Afinal中的FinalDb</code>、<code>Realm</code>等等。这次我采用的是<code>FinalDb</code>这个框架来进行数据的本地存储。下一款应用我打算用<code>Realm</code>或者<code>GreenDao</code>来做数据存储，之后也可以对比下这几个框架的优劣。下面我会记录一些我在使用<code>FinalDb</code>这个框架时候遇到的一些问题和总结。另外，<code>FinalDb</code>框架的增删改查源码分析会抽空专门写一篇来进行研究。</p>
+<a id="more"></a>
+<h3 id="使用总结"><a href="#使用总结" class="headerlink" title="使用总结"></a>使用总结</h3><h4 id="对象初始化"><a href="#对象初始化" class="headerlink" title="对象初始化"></a>对象初始化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FinalDb db = FinalDb.create(this, NConstants.NOTE_DB_NAME);</div></pre></td></tr></table></figure>
+<p>db对象初始化是用<code>FinalDb</code>类中的静态方法<code>create</code>方法来创建的，在<code>create</code>方法的内部逻辑中，会判断以<code>NConstant.NOTE_DB_NAME</code>这个名字命名的数据库是否已经存在，如果不存在，就会新建；如果存在，则会返回该数据库对象。在实际应用中，如果数据库是从<code>res-raw</code>资源文件夹中拷贝到sd卡上的，则需要在拷贝结束后，再初始化db对象。因为一般在拷贝前，先会判断数据库是否已经存在，如果已经初始化db对象，数据库文件已存在，则不会执行拷贝操作。</p>
+<h4 id="查找排序"><a href="#查找排序" class="headerlink" title="查找排序"></a>查找排序</h4><p>在某个笔记本下呈现全部笔记的页面里，会将最近操作过的笔记放在最前面的位置，所以从数据库读取笔记时，需要按时间进行<code>降序排列</code>，具体的实现代码是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list = db.findAllByWhere(Note.class, <span class="string">"noteBookName='"</span> + noteBookName + <span class="string">"'"</span>, <span class="string">"lastUpdateTimeInLong DESC"</span>);</div></pre></td></tr></table></figure>
+<p>而如果是需要<code>升序排列</code>，则把<code>DESC</code>改成<code>ASC</code>。</p>
+<p>说到了时间排列的问题，另外还要记录一下的就是，数据库存储的最近更新时间有两个格式，一个是<code>字符串类型</code>，一个是<code>long类型</code>，其中字符串类型的时间带上了时区信息，便于记录笔记是在哪个时区的哪个时间创建或修改的，这样就避免了因为换时区，导致显示的时间不同的问题；long类型的时间就是为了降序排列而记录的。</p>
+<h4 id="非某个名字的查找"><a href="#非某个名字的查找" class="headerlink" title="非某个名字的查找"></a>非某个名字的查找</h4><p>下面的代码是用来查找除了某个名字之外的其它所有内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list = db.findAllByWhere(NoteBook.class, <span class="string">"name!='"</span> + values.getName() + <span class="string">"'"</span>);</div></pre></td></tr></table></figure>
+<h2 id="事件发布方面（EventBus）"><a href="#事件发布方面（EventBus）" class="headerlink" title="事件发布方面（EventBus）"></a>事件发布方面（EventBus）</h2><p>在笔记类应用中，由于在修改、移动、删除笔记操作时，都会伴随着其它页面的一些变动，所以也就需要一个消息总线来发布事件，订阅事件以实现程序间组件的通信，这里我选择了用得比较多的一个框架–<code>EventBus</code>。<br>3.0.0版本的<code>EventBus</code>中<code>register</code>和<code>post</code>两种方法与之前版本相同，但是在<code>事件处理</code>的方式上有了很大的不同，例如之前使用的方法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public void onEventMainThread(event) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而在3.0.0版本以后，使用注释来说明事件处理的线程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Subscribe (threadMode =  ThreadMode.MainThread)</div><div class="line">public void onUserEvent(event) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在刚开始进行开发时，对于发布的事件没有进行封装，这样一来，<code>post</code>出去的事件在处理的时候没有起到作用，例如在移动笔记时，会涉及到两个笔记本的数量变动，没有进行封装前，就会将全部的笔记本重新初始化一遍，这样的性能可想而知是不会高的。在后来的优化中，将涉及到的笔记本、笔记本的位置和笔记本操作类型(分为移动笔记和创建笔记本两种)封装成<code>NoteBookEvent</code>，在<code>post</code>的时候将<code>NoteBookEvent</code>对象发布出去，进而在处理事件时，只针对相关的笔记本进行操作，而不是全部笔记本初始化一遍。</p>
+<h2 id="印象笔记接入方面"><a href="#印象笔记接入方面" class="headerlink" title="印象笔记接入方面"></a>印象笔记接入方面</h2><p>多彩笔记在功能设计时，就把接入印象笔记作为功能之一。在实际开发中，还是遇到了一些细节上的问题，值得记录下来。</p>
+<h3 id="登录回调"><a href="#登录回调" class="headerlink" title="登录回调"></a>登录回调</h3><p>印象笔记的登录回调支持两种模式:</p>
+<ul>
+<li><code>onActivityResult</code>方法里面判断<code>requestCode</code>是否是<code>EvernoteSession.REQUEST_CODE_LOGIN</code>以及<code>resultCode</code>是否是<code>RESULT_OK</code>，如果是，则说明登录成功，接下来就是去获取用户信息的操作:<code>evernote.getUser()</code>。</li>
+<li>另一种方式是实现<code>ResultCallback</code>接口，但是在多彩笔记应用里，由于<code>Activity</code>不是<code>FragmentActivity</code>，所以在实现<code>ResultCallback</code>接口的回调中，没法获取到用户登录是否成功的信息。</li>
+</ul>
+<h3 id="多彩笔记在印象笔记里的专属笔记本"><a href="#多彩笔记在印象笔记里的专属笔记本" class="headerlink" title="多彩笔记在印象笔记里的专属笔记本"></a>多彩笔记在印象笔记里的专属笔记本</h3><p>印象笔记的机制是：对于每个第三方接入的应用，由应用本身创建一个专属的笔记本用来同步笔记。所以在每次同步笔记之前，都要先检查专属的笔记本是否存在，如果不存在，则需要创建，具体实现方法是<code>Evernote</code>类里的<code>makeSureNotebookExist(@NonNull String notebookName)</code>。</p>
+<h3 id="相同笔记多次同步如何避免在印象笔记里重复出现"><a href="#相同笔记多次同步如何避免在印象笔记里重复出现" class="headerlink" title="相同笔记多次同步如何避免在印象笔记里重复出现"></a>相同笔记多次同步如何避免在印象笔记里重复出现</h3><p>印象笔记会个每条笔记设置一个唯一的<code>guid</code>，所以多彩笔记里，也把<code>guid</code>当作笔记的唯一识别码存储起来，在每次同步笔记时，会检查本地笔记的<code>guid</code>是否有值，如果没有，则说明是第一次上传，这样就需要创建一条印象笔记；如果有，则说明是更新笔记的操作，无需创建新的一条印象笔记。</p>
+<h3 id="单向同步（多彩笔记-gt-印象笔记）"><a href="#单向同步（多彩笔记-gt-印象笔记）" class="headerlink" title="单向同步（多彩笔记-&gt;印象笔记）"></a>单向同步（多彩笔记-&gt;印象笔记）</h3><p>多彩笔记只做了单向同步到印象笔记功能，除了我觉得对于小的笔记类应用来说，所产生的笔记大部分都只会向印象笔记汇聚，而没有必要进行反向同步，因为这类笔记应用的用户粘性不会高。还有一个原因是，多彩笔记也有笔记本的概念，同步到印象笔记之后，原有的笔记本信息没有办法保存，在进行反向同步时，也就没法找到原来的笔记本，所以也就索性没有做反向同步这个功能。</p>
+<h2 id="软键盘方面"><a href="#软键盘方面" class="headerlink" title="软键盘方面"></a>软键盘方面</h2><p>由于笔记里面需要键盘输入操作，所以要用到Android打开键盘以及关闭键盘的API，但是在实际开发以及测试过程中，目前还没有发现封装两个接口可以解决所以键盘打开和关闭的操作，所以这里只是把我在开发过程中遇到的一些情况给记录下来：</p>
+<ul>
+<li><p>从一个Activity跳入另一个Activity需要自动打开键盘，有一个方法可以实现:</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>其它开启关闭键盘有效方法:</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static void hideKeyboard(Activity activity) &#123;</div><div class="line">      InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);</div><div class="line">      imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public static void hideKeyboard(Context context, View view) &#123;</div><div class="line">      InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);</div><div class="line">      imm.hideSoftInputFromWindow(view.getWindowToken(), 0);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public static void showKeyboard(Context context) &#123;</div><div class="line">      InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);</div><div class="line">      inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>上面<code>hideKeyboard</code>方法是在<code>键盘关闭，关闭activity，键盘不会重新打开</code>情况下也可以使用的，因为用户在输入文字之后，可能在<code>键盘关闭或者打开的情况下去关闭activity</code>，所以需要一个无论什么情况都能让键盘关闭的方法才能满足需求。</p>
+<h2 id="一些小问题"><a href="#一些小问题" class="headerlink" title="一些小问题"></a>一些小问题</h2><ul>
+<li><code>AsyncTask</code>里的<code>execute</code>方法只能执行一次，如果重复执行，会导致程序崩溃，所以正确的处理是每次都<code>new</code>一个<code>AsyncTask</code>对象来进行操作</li>
+<li>可滑动侧边栏<code>drawerLayout</code>设置背景颜色的方法<code>drawerLayout.setScrimColor(getResources().getColor(R.color.black_transparency_12));</code></li>
+<li><code>FloatingActionButton</code>在xml文件里由<code>layout_gravity</code>设置时，初始化进入页面设置<code>setVisibility</code>为<code>gone</code>，会出现闪动一下再消失，影响美观；如果采用<code>app:layout_anchor+layout_anchorGravity</code>来对位置进行设置，则用<code>setVisibility</code>方法就不会有闪动的问题。</li>
+<li>在笔记页面里，出现保存的“对勾”按键是由四个纬度来判断的：<ul>
+<li>笔记内容改变，出现保存按键</li>
+<li>笔记标题改变，出现保存按键</li>
+<li>所在笔记本改变，出现保存按键</li>
+<li>笔记内容和笔记标题长度有一个不为零，出现保存按键</li>
+</ul>
+</li>
+</ul>
+<h2 id="待写总结-单独出来"><a href="#待写总结-单独出来" class="headerlink" title="待写总结(单独出来)"></a>待写总结(单独出来)</h2><h3 id="打包问题"><a href="#打包问题" class="headerlink" title="打包问题"></a>打包问题</h3><h3 id="FinalDb分析与学习"><a href="#FinalDb分析与学习" class="headerlink" title="FinalDb分析与学习"></a>FinalDb分析与学习</h3><h3 id="EventBus分析与学习"><a href="#EventBus分析与学习" class="headerlink" title="EventBus分析与学习"></a>EventBus分析与学习</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/04/24/20160424-research-on-java-memory-overweighted/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          记一次Java内存占用过大排查
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《硅谷之谜》读书笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">影评</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

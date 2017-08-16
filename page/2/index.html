@@ -139,6 +139,230 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-20160116-thinking-fast-and-slow-reading-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/">《思考，快与慢》读书笔记</a>
+    </h1>
+  
+
+        <a href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/" class="archive-article-date">
+  	<time datetime="2016-01-16T12:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一部分：系统1-系统2"><a href="#第一部分：系统1-系统2" class="headerlink" title="第一部分：系统1,系统2"></a>第一部分：系统1,系统2</h2><h3 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h3><ul>
+<li>P9—系统1和系统2的分工非常高效：代价最小，效果最好。通常情况下，这种分工很有效，因为系统1很善于完成自己的本职工作：它在熟悉情境中采取的模式是精确的，所作出的短期预测是准确的，遇到挑战时做出的第一反应也是迅速且基本恰当的。然而，系统1存在成见，在很多特定的情况下，这一系统易犯系统性错误。<code>你会发现这个系统有时候会将原本较难的问题作简单化处理</code>，对于<code>逻辑学和统计学问题</code>，它几乎一无所知。系统1还有一个更大的局限，即我们无法关闭它。如果看到屏幕上显示一个你认识的单词，你就能读出这个词。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/01/16/20160116-thinking-fast-and-slow-reading-notes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151124-drag-select-image-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/24/20151124-drag-select-image-summary/">仿Smartisan OS图库快速选择功能</a>
+    </h1>
+  
+
+        <a href="/2015/11/24/20151124-drag-select-image-summary/" class="archive-article-date">
+  	<time datetime="2015-11-24T07:34:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Smartisan-OS图库快速选择功能描述"><a href="#Smartisan-OS图库快速选择功能描述" class="headerlink" title="Smartisan OS图库快速选择功能描述"></a>Smartisan OS图库快速选择功能描述</h2><p>使用Smartisan OS的用户应该都知道图库有个快速选择功能，用户在编辑模式下，可以滑动选中图片。这个功能当时发布会时，老罗也拿出来当作亮点功能说的，确实这个功能在使用上手之后，对于批量删除操作，是很赞的。在深入分析这个功能之后，发现里面涉及到很多内容，在此先分解下它的功能细节:</p>
+<ol>
+<li>只有横向滑动才会触发快速选择图片模式，为了避免与竖滑滚动操作冲突</li>
+<li>一开始滑动时，到第二个位置才会<code>将第一个和第二个位置下的图片一起进行操作（选中或清除）</code>，此后都是滑到哪个位置操作到哪个位置（滑动方向没有变化的情况）</li>
+<li>如果滑动方向改变了（例如本来的方向是朝着位置不断变大滑，突然转向，朝着位置变小滑，此时认为它滑动方向变化），然后就是对上一个位置进行操作</li>
+<li>如果<code>滑动到的位置与上一个位置之差绝对值大于1</code>，则需要对两个位置中间的位置进行操作，如果有转向，则传入的位置参数也会有不同</li>
+<li>滑动到屏幕上下边界的时候，视图会自动滚动</li>
+<li>可以记录每一次滑动的初始目的，是要进行<code>选中</code>还是<code>清除</code>操作，如果进行的是<code>选中</code>操作，则在滑动过程中遇到已经选中的图片，就不会对它进行清除操作</li>
+</ol>
+        
+          <a class="article-more-a" href="/2015/11/24/20151124-drag-select-image-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151122-cross-the-GFW" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/20151122-cross-the-GFW/">爬墙思路总结</a>
+    </h1>
+  
+
+        <a href="/2015/11/22/20151122-cross-the-GFW/" class="archive-article-date">
+  	<time datetime="2015-11-22T07:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，这不是一篇严格意义上的爬墙教程，因为爬墙的方式太多，各种细节也太多，所以本文只是记录其中一种思路，能看到本文的还请包涵。PS：本文的操作是针对<strong><code>MAC OS</code></strong>，并且需要一定的Linux操作指令基础，因为像<code>cd</code>、<code>ls</code>等指令都是基础的Linux指令，在操作过程中都需要用到。</p>
+        
+          <a class="article-more-a" href="/2015/11/22/20151122-cross-the-GFW/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技能/">实用技能</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20151117-v1.3.4.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/17/20151117-v1.3.4.0-dev-summary/">MME_v1.3.4.0_开发个人总结</a>
+    </h1>
+  
+
+        <a href="/2015/11/17/20151117-v1.3.4.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-11-17T12:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="照片按时间分组的实现分析"><a href="#照片按时间分组的实现分析" class="headerlink" title="照片按时间分组的实现分析"></a>照片按时间分组的实现分析</h2><p>这个版本新加了这样一个功能：<code>照片按照时间进行分组排列</code>，要实现这个功能，则需要让<code>RecyclerView</code>有两个<code>ViewType</code>，下面就来记录下同事实现的思路:</p>
+<ol>
+<li>在<code>adapter</code>类里重写<code>getItemViewType</code>方法，并用<code>isParent</code>方法判断类型，返回两个不同的类型:<code>ITEM_VIEW_TYPE_PARENT</code>和<code>ITEM_VIEW_TYPE_CHILD</code></li>
+<li>在<code>onCreateViewHolder</code>方法里，判断<code>viewType</code>，绘制不同xml里的view，然后返回不同的<code>ViewHolder</code></li>
+<li>在<code>onBindViewHolder</code>方法里，根据<code>ViewHolder</code>不同，执行不同的代码逻辑</li>
+<li><code>ItemViewType</code>是通过对<code>SecureAlbum</code>model用<code>setAdapterType</code>方法进行设置，然后根据不同位置，设置不同的<code>ItemViewType</code>，以便<code>adapter</code>可以根据不同类型生成不同的view</li>
+</ol>
+        
+          <a class="article-more-a" href="/2015/11/17/20151117-v1.3.4.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-20151026-mme-v1.3.2.1+v1.3.3.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,12 +604,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/14/20150714-mme-v1.2.0-dev-summary/">MME_v1.2.0_开发个人总结</a>
+      <a class="article-title" href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/">MME_v1.2.0_开发个人总结</a>
     </h1>
   
 
-        <a href="/2015/07/14/20150714-mme-v1.2.0-dev-summary/" class="archive-article-date">
-  	<time datetime="2015-07-14T02:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-14</time>
+        <a href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-07-14T02:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-13</time>
 </a>
       </header>
     
@@ -400,7 +624,7 @@
 <p><img src="http://ww2.sinaimg.cn/bmiddle/84460b13jw1eu28ba3yrxj20u004c74o.jpg" alt="触发前"></p>
 <p><img src="http://ww3.sinaimg.cn/bmiddle/84460b13jw1eu28baj74oj20u004daad.jpg" alt="触发后"></p>
         
-          <a class="article-more-a" href="/2015/07/14/20150714-mme-v1.2.0-dev-summary/#more">more >></a>
+          <a class="article-more-a" href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/#more">more >></a>
         
       
 
@@ -493,66 +717,9 @@
 
 
   
-    <article id="post-20150428-O2O-hard-points-and-marketing-plan" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/28/20150428-O2O-hard-points-and-marketing-plan/">O2O行业下沉难点与可能的推广方式--三四线城市</a>
-    </h1>
-  
-
-        <a href="/2015/04/28/20150428-O2O-hard-points-and-marketing-plan/" class="archive-article-date">
-  	<time datetime="2015-04-28T06:06:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-28</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>促使我写本文的诱因是今年过年在家的一个小事情：大年三十早上约了同学出去玩，因为老爸车开走了，我又快赶不上时间了，抱着试试看的想法，拿出了手机用滴滴打车叫了车。在加价5元（另外滴滴打车还有加价4元给司机师傅）的前提下，有一位司机过来接我并把我送到了目的地。上车之前，我意淫着：这真的是改变啊，大年三十从来不打表的临海还能用打车软件打到车并且打表送我到目的地。所以上车后，也就开心地跟司机闲聊着，车上聊得内容总结起来有以下几点： </p>
-<ul>
-<li>临海的出租车司机基本没有使用快的打车，使用滴滴打车的司机大概有40-50人（数据真实性未知，但能反应司机使用的人数很少）</li>
-<li>每天通过打车软件接单4-5单左右，很少</li>
-<li>为什么会这样？司机师傅给出一个解释：临海的私家车保有量比较高，出租车生意本身就没以前好做了，也就是说出租车的用车情况不紧张，路边随手拦车的成功率较高（除非一点偏远地点，例如我家位置偏郊区）。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2015/04/28/20150428-O2O-hard-points-and-marketing-plan/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科技/">科技</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -608,6 +775,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">杂文</a>
               </li>
              
@@ -616,11 +787,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Android</a>
+                <a href="javascript:void(0)">实用技能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">实用技能</a>
+                <a href="javascript:void(0)">读书笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,7 +799,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">读书笔记</a>
+                <a href="javascript:void(0)">影评</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
               </li>
             
             <div class="clearfix"></div>

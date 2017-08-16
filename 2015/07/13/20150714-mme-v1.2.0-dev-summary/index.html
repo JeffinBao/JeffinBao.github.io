@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MME_v1.2.0_开发个人总结 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="界面布局重叠View导致button点击失效的处理方案调整相机参数的几个功能是由最左边的“option button”来点击触发的，触发之后，会有一个“match_parent”的黑色半透明view，刚开始采用的是RelativeLayout，这样就会造成button和下面的view重叠，导致button点击事件失效。在回忆了当时学习Android Layout方面的知识之后，并且用eclipse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MME_v1.2.0_开发个人总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/13/20150714-mme-v1.2.0-dev-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="界面布局重叠View导致button点击失效的处理方案调整相机参数的几个功能是由最左边的“option button”来点击触发的，触发之后，会有一个“match_parent”的黑色半透明view，刚开始采用的是RelativeLayout，这样就会造成button和下面的view重叠，导致button点击事件失效。在回忆了当时学习Android Layout方面的知识之后，并且用eclipse">
+<meta property="og:image" content="http://ww2.sinaimg.cn/bmiddle/84460b13jw1eu28ba3yrxj20u004c74o.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/bmiddle/84460b13jw1eu28baj74oj20u004daad.jpg">
+<meta property="og:updated_time" content="2016-12-22T06:44:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MME_v1.2.0_开发个人总结">
+<meta name="twitter:description" content="界面布局重叠View导致button点击失效的处理方案调整相机参数的几个功能是由最左边的“option button”来点击触发的，触发之后，会有一个“match_parent”的黑色半透明view，刚开始采用的是RelativeLayout，这样就会造成button和下面的view重叠，导致button点击事件失效。在回忆了当时学习Android Layout方面的知识之后，并且用eclipse">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/bmiddle/84460b13jw1eu28ba3yrxj20u004c74o.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20150714-mme-v1.2.0-dev-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MME_v1.2.0_开发个人总结
+    </h1>
+  
+
+        <a href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2015-07-14T02:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="界面布局"><a href="#界面布局" class="headerlink" title="界面布局"></a>界面布局</h2><h3 id="重叠View导致button点击失效的处理方案"><a href="#重叠View导致button点击失效的处理方案" class="headerlink" title="重叠View导致button点击失效的处理方案"></a>重叠View导致button点击失效的处理方案</h3><p>调整相机参数的几个功能是由最左边的“option button”来点击触发的，触发之后，会有一个“match_parent”的黑色半透明view，刚开始采用的是RelativeLayout，这样就会造成button和下面的view重叠，导致button点击事件失效。在回忆了当时学习Android Layout方面的知识之后，并且用eclipse的monitor解析了一个类似界面的app的布局，意识到这个问题可以用FrameLayout来实现，因为FrameLayout默认的排版就是将view按照添加的先后顺序堆在屏幕的左上角。<br>需要注意的是：FrameLayout只支持下面三种方式来调整排版的位置：</p>
+<ul>
+<li><strong>layout_gravity</strong></li>
+<li><strong>layout_marginXXX</strong></li>
+<li><strong>layout_paddingXXX</strong></li>
+</ul>
+<p><img src="http://ww2.sinaimg.cn/bmiddle/84460b13jw1eu28ba3yrxj20u004c74o.jpg" alt="触发前"></p>
+<p><img src="http://ww3.sinaimg.cn/bmiddle/84460b13jw1eu28baj74oj20u004daad.jpg" alt="触发后"></p>
+<a id="more"></a>
+<h3 id="SeekBar上数值随着thumb移动如何实现"><a href="#SeekBar上数值随着thumb移动如何实现" class="headerlink" title="SeekBar上数值随着thumb移动如何实现"></a>SeekBar上数值随着thumb移动如何实现</h3><p>最重要的是求出thumb移动时的<strong><code>X轴坐标位置</code></strong>（如果seekbar是竖直的，则为Y轴坐标位置），重写SeekBar类中的<strong><code>onDraw(Canvas c)</code></strong>方法，用<strong><code>c.drawText(String s,float x,float y,Paint p)</code></strong>来实时绘制thumb上面的数值，thumb的X坐标位置+Y坐标位置（需要稍微改变下，避免与thumb重合）传入<strong><code>c.drawText</code></strong>方法中。</p>
+<p>注意点：</p>
+<ul>
+<li>如果传入的数据需要外面的函数确定，则需要在重写类里写相关的实现函数。</li>
+<li>由于thumb本身有大小之分，也有offset，数值的位置使用计算出的thumb的X轴坐标会跟thumb本身有些偏差，需要进行一些调整。</li>
+<li>另一种解决方案是SeekBar+PopupWindow，具体例子：<a href="http://blog.csdn.net/ouyang_peng/article/details/16982573" target="_blank" rel="external">SeekBar+PopupWindow</a></li>
+</ul>
+<h3 id="自定义Toast"><a href="#自定义Toast" class="headerlink" title="自定义Toast"></a>自定义Toast</h3><p>由于一般用户在点击切换闪光灯时都会很快速切换好几个状态，此时Toast就要满足下一个Toast出现的时候覆盖掉上一个Toast，如果不做一些限制，则Toast会按照顺序一个一个将动画效果执行完，就会出现用户执行完操作很长时间之后Toast还在进行切换。所以在这里自定义Toast做了如下的判断：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (mToast != null) &#123;</div><div class="line">   mTextViewToast.setText(text);</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">   mToast = new Toast(mContext);</div><div class="line">   mTextViewToast.setText(text);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>上面这段代码的意思就很容易明白了，如果mToast不为空，则立马替换里面的Text；如果为空，则先创建实例，在setText。这样就能实现每次点击，Toast实时更新。</p>
+<h2 id="动画相关"><a href="#动画相关" class="headerlink" title="动画相关"></a>动画相关</h2><h3 id="切换摄像头的3d旋转动画"><a href="#切换摄像头的3d旋转动画" class="headerlink" title="切换摄像头的3d旋转动画"></a>切换摄像头的3d旋转动画</h3><p>Rotate3dAnimation是Android API Demos里面的一个类，如果第三方SDK里面没有，可以自己借鉴Android API Demos里面写一个。<br>旋转的角度是从<strong><code>0-90°</code></strong>再到<strong><code>270°-360°</code></strong>，使用了两次Rotate3dAnimation的动画效果，实现镜头绕着屏幕中间的Y轴旋转360°的效果。这个动画的主要目的是在切换镜头的时候，实现顺滑过渡。<br>实现思路借鉴：<a href="http://blog.csdn.net/guolin_blog/article/details/10766017" target="_blank" rel="external">郭霖的博客–Android中轴旋转特效实现</a></p>
+<h3 id="Interpolator的使用"><a href="#Interpolator的使用" class="headerlink" title="Interpolator的使用"></a>Interpolator的使用</h3><p>Android中默认的Interpolator有<strong><code>AccelerateInterpolator</code></strong>、<strong><code>BounceInterpolator</code></strong>、<strong><code>AccelerateDecelerateInterpolator</code></strong>、<strong><code>AnticipateOvershootInterpolator</code></strong>等等，主要的作用就是Android动画的变化率，特别是<strong><code>BounceInterpolator</code></strong>，模仿的是物体自由落体的运动，会有几次回弹的效果，如果在使用时不满足项目要求，可以自己重写里面的回弹函数，可以控制回弹的次数以及回弹幅度。</p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>如果对某个button直接采用<strong><code>imagebutton.animate().rotation().setListener()</code></strong>的形式加载动画，<strong><code>onAnimationEnd()</code></strong>方法会执行两次，导致imagebutton最终的动画效果不是自己想要的，暂时没有找到问题在哪。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/07/13/20150714-mme-v1.2.0-dev-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/08/08/20150819-mme-v1.2.0-after-revision-dev-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MME_v1.2.0_改版后_开发个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/17/20150517-jeffinbaocv-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JeffinBaoCV--个人简历开发总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">影评</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

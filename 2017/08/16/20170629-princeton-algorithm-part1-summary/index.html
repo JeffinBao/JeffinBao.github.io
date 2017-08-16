@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Princeton_Algorithm PartI 作业总结分析 | Jeffin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Week1: Percolation主要思路
+想要达到Percolation的状态，则要一个正方形的矩阵块中，从顶到底，一个小块能通过与其前后左右的方块连通，并由此传递到底部的方块。
+采用WeightedQuickUnionFind将已经open的方块union起来，可以形成一串已经open的方块，之后每次新open一个方块，用find方法，来判断parent方块是否与顶或者底连通。
+如果一个方块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Princeton_Algorithm PartI 作业总结分析">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/20170629-princeton-algorithm-part1-summary/index.html">
+<meta property="og:site_name" content="Jeffin's Blog">
+<meta property="og:description" content="Week1: Percolation主要思路
+想要达到Percolation的状态，则要一个正方形的矩阵块中，从顶到底，一个小块能通过与其前后左右的方块连通，并由此传递到底部的方块。
+采用WeightedQuickUnionFind将已经open的方块union起来，可以形成一串已经open的方块，之后每次新open一个方块，用find方法，来判断parent方块是否与顶或者底连通。
+如果一个方块">
+<meta property="og:updated_time" content="2017-08-16T15:51:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Princeton_Algorithm PartI 作业总结分析">
+<meta name="twitter:description" content="Week1: Percolation主要思路
+想要达到Percolation的状态，则要一个正方形的矩阵块中，从顶到底，一个小块能通过与其前后左右的方块连通，并由此传递到底部的方块。
+采用WeightedQuickUnionFind将已经open的方块union起来，可以形成一串已经open的方块，之后每次新open一个方块，用find方法，来判断parent方块是否与顶或者底连通。
+如果一个方块">
+  
+    <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/jeffin.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jeffin</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Self-discipline brings freedom</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">Main Page</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">All articles</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jeffin</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://oikh7dnd5.bkt.clouddn.com/Jeffin_201508.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jeffin</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Self-discipline brings freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Main Page</a></li>
+		        
+		        
+		        	<li><a href="/archives/">All articles</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JeffinBao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2219182867" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/zeroreh/" title="douban"><i class="icon-douban"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:bjf13609846991@gmail.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-20170629-princeton-algorithm-part1-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Princeton_Algorithm PartI 作业总结分析
+    </h1>
+  
+
+        <a href="/2017/08/16/20170629-princeton-algorithm-part1-summary/" class="archive-article-date">
+  	<time datetime="2017-08-16T15:51:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Week1-Percolation"><a href="#Week1-Percolation" class="headerlink" title="Week1: Percolation"></a>Week1: Percolation</h2><h3 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h3><ol>
+<li>想要达到Percolation的状态，则要一个正方形的矩阵块中，从顶到底，一个小块能通过与其前后左右的方块连通，并由此传递到底部的方块。</li>
+<li>采用<em>WeightedQuickUnionFind</em>将已经open的方块<em>union</em>起来，可以形成一串已经open的方块，之后每次新open一个方块，用<em>find</em>方法，来判断parent方块是否与顶或者底连通。</li>
+<li>如果一个方块，与顶和底都能连通，此时整个矩阵块达到Percolation的状态。<h3 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h3></li>
+<li>将二维矩阵转化为一位，通过<em>xyTo1D</em>方法来实现，转化以后的数组用来记录某个方块是否open，是否与顶和底连通都状态信息。</li>
+<li>当open了一个方块后，要将它与前后左右四块方块中已经open的连通起来，并且判断他们的parent是否与顶或者底连通。</li>
+<li>注意边界问题，行和列的取值大于等于1，小于等于n；并且，如果第一行或者第n行的方块open了，那此方块的parent方块与顶或者底也就连通了。</li>
+<li><strong>(double)percolation.numberOfOpenSites()/(range*range)</strong>前面要用double进行强转，因为分母大于分子，并且都是int型，如果不进行强转，相除之后的值为0。</li>
+</ol>
+<a id="more"></a>
+<h2 id="Week2-Queue"><a href="#Week2-Queue" class="headerlink" title="Week2: Queue"></a>Week2: Queue</h2><h3 id="主要思路-1"><a href="#主要思路-1" class="headerlink" title="主要思路"></a>主要思路</h3><ol>
+<li><em>Deque</em>使用的数据结构是定义一个内部类<em>Node</em>，其中一个node里有：</li>
+</ol>
+<ul>
+<li>泛型 Item – 当前节点</li>
+<li>Node prev – 前节点</li>
+<li>Node next – 后节点</li>
+</ul>
+<ol>
+<li><em>RandomizedQueue</em>则采用可变长度的数组：</li>
+</ol>
+<ul>
+<li>当元素个数增加到当前数组最大长度时，则将数组容量翻倍。</li>
+<li>当元素个数减少到当前数组最大长度的1/4时，则将数组容量缩小到一半。<br>###一些注意点</li>
+</ul>
+<ol>
+<li><em>Deque</em>的四个方法：<em>addFirst</em>/<em>addLast</em>/<em>removeFirst</em>/<em>removeLast</em>的主要目的就是建立相邻两个节点之间的双向连接，增加和删除首尾节点时，新节点与前节点或者后节点的连接该变动的变动。拿<em>addFirst</em>举例：</li>
+</ol>
+<ul>
+<li>在头节点前增加新节点，则原来的<em>first</em>节点变成<em>oldFirst</em>。</li>
+<li>此时要新建一个节点<em>first = new Node()</em>，并且赋值：<em>first.item = item</em> + <em>first.next = oldFirst</em>。</li>
+<li>判断极限情况：如果当前<em>Deque</em>为空，则<em>first</em>和<em>last</em>节点相同；如果不为空，则<em>oldFirst.prev = first</em>，将旧first节点的前节点链接到当前的first节点。</li>
+</ul>
+<ol>
+<li><em>RandomizedQueue</em>最主要的一个特点就是每次调用<em>iterator</em>或者<em>dequeue</em>方法，都是取一个n范围内的随机数。例如迭代器的<em>next</em>方法里，用<em>StdRandom.uniform(n)</em>生成随机数，然后取出该值，并且将<em>temp[index] = temp[i - 1]</em>，然后将<em>temp[i - 1] = null</em>，释放存储空间。</li>
+</ol>
+<h2 id="Week3-Collinear"><a href="#Week3-Collinear" class="headerlink" title="Week3: Collinear"></a>Week3: Collinear</h2><h3 id="主要思路-2"><a href="#主要思路-2" class="headerlink" title="主要思路"></a>主要思路</h3><h4 id="Brute类型算法"><a href="#Brute类型算法" class="headerlink" title="Brute类型算法"></a>Brute类型算法</h4><p>由于这个算法只要求找到4点共线，那就采用暴力枚举的方法，用4个循环，找4个点，分别计算后三点与第一个点的斜率，然后再比较斜率，如果三个斜率分别相等，再将4个点进行排序，线段就由最小点和最大点组成。</p>
+<h4 id="Fast类型算法"><a href="#Fast类型算法" class="headerlink" title="Fast类型算法"></a>Fast类型算法</h4><ol>
+<li>每个点都作为起始点，用<em>slopeOrder()</em>这个比较器来对<em>Points</em>数组进行排序。</li>
+<li>接着比较斜率的大小，只要斜率一直相同，记录相同斜率线条的参数就一直自增，但只要一出现斜率不同，所有初始参数重置，不管此时是否达到要求有4点或以上的点共线。</li>
+<li>为了避免重复计算的情况出现,只计算<em>min</em>点和<em>tempPoints[0]</em>点是同一个点的线段,因为每个循环都是想找以当前标准点为起始点的共线线段。</li>
+<li>极限情况,如果最后一条斜率刚刚满足到<em>dotCounts &gt;= 2</em>,那把这条线段也要包括进来。</li>
+</ol>
+<h3 id="一些注意点-1"><a href="#一些注意点-1" class="headerlink" title="一些注意点"></a>一些注意点</h3><ol>
+<li>java程序的输入还是输出的array，一定要在程序内做个copy，不是仅仅copy reference，是把reference所指向的object也copy了。这样，当程序外面的array有变化的时候，不会影响程序内的数据，就是immutable的了！<em>BruteCollinearPoints.java</em>解释了为什么计算共线点的代码要写在构造函数里的原因:保证segments方法返回的value是不变的, 如果写在segments方法里面,可能会造成lineSegments对象还在改变的时候, 就返回了value。</li>
+<li>尽量不要改变传入参数的数据结构，如果非要改变，则先copy到另外一个参数里去，在另外一个参数里去改变。</li>
+<li><em>Point.java</em>里的<em>slopeComparator</em>内部类，<em>compare</em>方法在比较斜率的时候，刚开始用了判断<em>slope1 - slope2 == 0</em>的方式，显然是错误的，因为斜率是<em>double</em>类型，而<em>0</em>是<em>int</em>型，真是低级的错误！</li>
+</ol>
+<h2 id="Week4-8puzzle"><a href="#Week4-8puzzle" class="headerlink" title="Week4: 8puzzle"></a>Week4: 8puzzle</h2><h3 id="主要思路-3"><a href="#主要思路-3" class="headerlink" title="主要思路"></a>主要思路</h3><ol>
+<li>8puzzle是一个九宫格，只有8个位置上有数字，想要把每个数字都按照从左到右从上到下顺序移动到各自的位置所需要的最优步数。</li>
+<li>它有一个重要特性是：随意交换两个不为零的位置的数字，如果新的<em>board</em>可以最终移动到目标位置的话，那原来的<em>board</em>肯定是没有解的。</li>
+<li>有两个距离：</li>
+</ol>
+<ul>
+<li>hamming：不在正确位置上的数字的个数</li>
+<li>manhattan: 在错误位置上的数字离目标位置的距离（横向和竖向距离的和）</li>
+</ul>
+<ol>
+<li><em>neighbors</em>定义：空位置与上下左右非空位置调换后的<em>board</em>，一个<em>board</em>最多会有四个<em>neighbor</em>，最少会有两个（在四个角上的情况）。</li>
+<li>程序里面的<em>MinPQ</em>是一个<em>priority queue</em>，每次调用<em>delMin</em>方法，都会返回当前队列里面预计需要步数（<em>priority = manhattan + current moves</em>）最小的节点（<em>node</em>），这里把每移动一步都当做一个节点，直到先达到目标位置为止。</li>
+<li>为了避免重复移动，如果上一步节点的<em>board</em>位置与当前<em>board</em>位置相同，则不用将此<em>board</em>当做一个节点加入<em>MinPQ</em>，代码中即是<em>node.prev ！= null &amp;&amp; cur.prev.board.equals(board)</em>。</li>
+<li>等到所有位置都到目标位置之后，判断当前节点是否是<em>twin</em>节点，如果不是，则说明有解，则利用<em>node.prev</em>把刚才一步步都装进stack里，作为解的步骤；如果是，则说明原<em>board</em>无解。</li>
+</ol>
+<h3 id="一些注意点-2"><a href="#一些注意点-2" class="headerlink" title="一些注意点"></a>一些注意点</h3><ol>
+<li>遇到<strong>二维数组</strong>，慎用<em>clone</em>方法，因为复制了二维数组以后，每行的引用对象相同，复制的二维数组的变化会导致原数组也产生变化。</li>
+<li>将原<em>board</em>和<em>twin board</em>放在一个<em>MinPQ</em>里最重要的原因是性能的考虑，而且由于这两者互斥，只要一个有解，另一个就是无解的，此时可以跳出<em>while</em>循环，进行下面的程序。</li>
+</ol>
+<h2 id="Week5-KdTree"><a href="#Week5-KdTree" class="headerlink" title="Week5: KdTree"></a>Week5: KdTree</h2><h3 id="主要思路-4"><a href="#主要思路-4" class="headerlink" title="主要思路"></a>主要思路</h3><ol>
+<li>作业题目的要求是给定平面内的一个矩形，找到离矩形内已知一点距离最近的点。</li>
+<li><em>KdTree.java</em>采用<strong>红黑二叉树</strong>算法和递归方式，逐步逼近离已知点最近的点；<em>PointSET.java</em>采用暴力枚举的方法，找到最近点以及矩形范围内包含的所有点的stack队列。</li>
+<li><em>2d-tree</em>在奇数层和偶数层的时候，对于矩形的分割是不同的，注意区分。</li>
+<li>其他注意点请参照代码里的标注。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/16/20170629-princeton-algorithm-part1-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/20170623-gangrenboqi-movie-review/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          另一个世界，另一种生活 -- 观《冈仁波齐》有感
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/21/20170307-chushijian-reading-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">传奇 -- 读《褚时健传》有感</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jeffin
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">影评</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java/Android Developer&lt;br&gt;Love reading and thinking&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
