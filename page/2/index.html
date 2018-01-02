@@ -139,6 +139,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-20160124-secret-of-silicon-valley-read-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/">《硅谷之谜》读书笔记</a>
+    </h1>
+  
+
+        <a href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/" class="archive-article-date">
+  	<time datetime="2016-01-24T06:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h2><ul>
+<li>P23—虽然嬉皮士给人的印象通常是年轻人过度开放乃至乱来，比如穿着破损的牛仔裤、吸毒、滥交，但这都只是嬉皮士的表象，<code>其深层埋藏着对传统价值观和思维方式的反叛，那些奇怪的表象实际上反映出年轻人试图树立自我意识却又迷茫的心态。对上一辈建立在有秩序的工业文明中的那种一板一眼的做事方式，以及在生活中保守中庸一丝不苟的价值观，嬉皮士们并不认同，他们尤其反对西方二战后的一代人所具有的那种冷战思维方式。嬉皮士们在思想上讲究平等和自由，并且以此探索新的价值观，在艺术创作上则通过吸毒等方式试图寻找灵感，尝试前所未有的创作。在个人行为上，他们试图通过标新立异来吸引社会注意，他们强调自我，很少仿照他人。这些人通常不追求物质享受，却在食不果腹时心怀世界。今天，在很多硅谷的公司里，包括苹果、Google和Facebook依然能够看到嬉皮士文化的影子。</code></li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/01/24/20160124-secret-of-silicon-valley-read-notes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-20160116-thinking-fast-and-slow-reading-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -656,67 +710,6 @@
 
 
   
-    <article id="post-20150517-jeffinbaocv-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/20150517-jeffinbaocv-summary/">JeffinBaoCV--个人简历开发总结</a>
-    </h1>
-  
-
-        <a href="/2015/05/17/20150517-jeffinbaocv-summary/" class="archive-article-date">
-  	<time datetime="2015-05-17T08:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-17</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="开发思路"><a href="#开发思路" class="headerlink" title="开发思路"></a>开发思路</h3><p>由于之前在网上看到了这样一份简历：作者把自己的经历采用类似于地图搜路径的方式呈现了出来，大致排版与Google Map很像，左边是模拟搜索后的文字版路径，右边则是地图中各个关键节点，一页纸就把自己的经历以一种很巧妙的形式展现了出来。当时看了之后，觉得作者很有创意，接着就自己在琢磨，他的简历最终是静态的pdf或者word形式，既然是以地图搜索的形式，能不能动态展现自己的经历呢：点击左边的某个具体点，右边地图上会有反馈，并且点击点图上的节点，会有该阶段个人的一个详细经历。</p>
-<p>想要有这样的效果，在网页上呈现，那html，js，css知识肯定是必不可少的。由于自己对于Android开发的兴趣比较大，初学编程接触的也是Java和Android，所以后来的想法就是，这样一份简历能不能最终以APP的形式呈现出来。</p>
-<p>有了想法的改变后，如何实现是接下来思考的问题。考虑到手机屏幕较小，原本在电脑端可以以一个版面呈现的简历在手机上要分成这样几个界面：</p>
-<ul>
-<li>初始搜索界面（类似于地图首页搜索）</li>
-<li>路径（人生经历）呈现界面</li>
-<li>每个人生阶段的地图界面</li>
-<li>该人生阶段的具体介绍界面</li>
-</ul>
-<p>上面的想法是借鉴手机上地图应用的逻辑：进入应用会有搜索框，搜索之后给出多重路径规划，针对某个路径会有具体的导航。至于该人生阶段的具体介绍界面，则会通过点击地图上的Marker来呈现一个界面。</p>
-        
-          <a class="article-more-a" href="/2015/05/17/20150517-jeffinbaocv-summary/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -731,7 +724,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Jeffin
+    		&copy; 2018 Jeffin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -803,7 +796,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">算法</a>
+                <a href="javascript:void(0)">Algorithms</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Data Structures</a>
               </li>
             
             <div class="clearfix"></div>

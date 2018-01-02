@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2015/9 | Jeffin&#39;s Blog</title>
+  <title>Delve Deep into Data Structures | Jeffin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java/Android Developer, Love reading and thinking">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jeffin's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2015/09/index.html">
+  <meta name="description" content="1. AVL TreeAVL Tree is based on BinarySearchTree. The most two common operations of a tree are ‘insert’ and ‘remove’ node. For these two operations, AVL Tree is almost the same to BinarySearchTree exc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Delve Deep into Data Structures">
+<meta property="og:url" content="http://yoursite.com/2018/01/02/20180102-delve-deep-into-data-structures/index.html">
 <meta property="og:site_name" content="Jeffin's Blog">
-<meta property="og:description" content="Java/Android Developer, Love reading and thinking">
+<meta property="og:description" content="1. AVL TreeAVL Tree is based on BinarySearchTree. The most two common operations of a tree are ‘insert’ and ‘remove’ node. For these two operations, AVL Tree is almost the same to BinarySearchTree exc">
+<meta property="og:image" content="https://raw.githubusercontent.com/JeffinBao/DataStructureRes/master/Tree/AVLTreeRotation.jpeg">
+<meta property="og:updated_time" content="2018-01-02T20:59:17.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jeffin's Blog">
-<meta name="twitter:description" content="Java/Android Developer, Love reading and thinking">
+<meta name="twitter:title" content="Delve Deep into Data Structures">
+<meta name="twitter:description" content="1. AVL TreeAVL Tree is based on BinarySearchTree. The most two common operations of a tree are ‘insert’ and ‘remove’ node. For these two operations, AVL Tree is almost the same to BinarySearchTree exc">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JeffinBao/DataStructureRes/master/Tree/AVLTreeRotation.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Jeffin&#39;s Blog" type="application/atom+xml">
   
@@ -137,54 +140,128 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-20180102-delve-deep-into-data-structures" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/" class="archive-article-date">
-  	<time datetime="2015-09-13T05:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/13/20150928-mme-v1.3.1+2-dev-summary/">MME_v1.3.1+v1.3.2_开发个人总结</a>
+    <h1 class="article-title" itemprop="name">
+      Delve Deep into Data Structures
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2018/01/02/20180102-delve-deep-into-data-structures/" class="archive-article-date">
+  	<time datetime="2018-01-02T20:52:28.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-AVL-Tree"><a href="#1-AVL-Tree" class="headerlink" title="1. AVL Tree"></a>1. AVL Tree</h2><p>AVL Tree is based on BinarySearchTree. The most two common operations of a tree are <strong>‘insert’</strong> and <strong>‘remove’</strong> node. For these two operations, AVL Tree is almost the same to BinarySearchTree except the <strong>‘balance’</strong> process in the end of each ‘insert’ and ‘remove’.<br>The <strong>‘balance’</strong> process is to check the height difference of <strong>every</strong> node’s left and right subtree, if the difference is greater than 1, that node needs to be rebalanced(rotated). And the rotation process includes two scenarios: <strong>single rotation</strong> and <strong>double rotation</strong>. Now, let’s dig deep into these two rotations.</p>
+<a id="more"></a>
+<h3 id="Single-Rotation"><a href="#Single-Rotation" class="headerlink" title="Single Rotation"></a>Single Rotation</h3><p>For single rotation, there are also two scenarios, which are <strong>‘left child - left child’</strong> and <strong>‘right child- right child’</strong>.</p>
+<ul>
+<li>Left child - left child<br>When writting codes for this condition, apart from the three major nodes(ancestor - left child - left child), do remember to switch the first left child’s right child to ancestor node’s new left child. For detailed explanation, please check the below graph.</li>
+<li>Right child - right child<br>When writting codes for this condition, apart from the three major nodes(ancestor - right child - ritht child), do remember to switch the first right child’s left child to ancestor node’s new right child. For detailed explanation, please check the below graph.</li>
+</ul>
+<h3 id="Double-Rotation"><a href="#Double-Rotation" class="headerlink" title="Double Rotation"></a>Double Rotation</h3><p>For double rotation, there are also two scenarios, which are <strong>‘left child - right child’</strong> and <strong>‘right child - left child’</strong>.</p>
+<ul>
+<li>Left child - right child<br>When writting code for this scenario, apart from the three major nodes(ancestor - left child - right child), do remember to switch the right child’s <strong>left or right child(it could be either child, but not both)</strong> to ancestor and left child’s new left or right child. For detailed explanation, please check the below graph.</li>
+<li>Right child - left child<br>When writting code for this scenario, apart from the three major nodes(ancestor - right child - left child), do remember to switch the left child’s <strong>left or right child(it could be either child, but not both)</strong> to ancestor and right child’s new left or right child. For detailed explanation, please check the below graph.</li>
+</ul>
+<p>After rotation process, we need to <strong>update the height</strong> of influenced nodes, where <strong>single rotation</strong> has two influenced nodes, while <strong>double rotation</strong> has three influenced nodes. For those nodes which <strong>don’t need to be rotated</strong>, we also need to <strong>set the height of the node</strong>.<br>Finally, we should return the <strong>new ‘root’</strong> node after rotation.<br>Please check below graph for rotation details.<br><img src="https://raw.githubusercontent.com/JeffinBao/DataStructureRes/master/Tree/AVLTreeRotation.jpeg" alt="Rotation details"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structures/">Data Structures</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/01/02/20180102-delve-deep-into-data-structures/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/16/20170807-policy-a-step-further/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">政策能否更进一步呢？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
 
 
           </div>
@@ -207,8 +284,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
