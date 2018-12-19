@@ -139,6 +139,58 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-20160226-colorful-notes-v1.0.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/">多彩笔记(ColorfulNotes)_v1.0.0 _ 开发总结</a>
+    </h1>
+  
+
+        <a href="/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/" class="archive-article-date">
+  	<time datetime="2016-02-27T05:28:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库方面"><a href="#数据库方面" class="headerlink" title="数据库方面"></a>数据库方面</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>由于这个应用涉及到本地存储笔记应用，所以需要用到Android的ORM框架(Object-Relational Mapping)，市面上有好多ORM框架，例如: <code>GreenDao</code>、<code>OrmLite</code>、<code>Afinal中的FinalDb</code>、<code>Realm</code>等等。这次我采用的是<code>FinalDb</code>这个框架来进行数据的本地存储。下一款应用我打算用<code>Realm</code>或者<code>GreenDao</code>来做数据存储，之后也可以对比下这几个框架的优劣。下面我会记录一些我在使用<code>FinalDb</code>这个框架时候遇到的一些问题和总结。另外，<code>FinalDb</code>框架的增删改查源码分析会抽空专门写一篇来进行研究。</p>
+        
+          <a class="article-more-a" href="/2016/02/26/20160226-colorful-notes-v1.0.0-dev-summary/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-20160124-secret-of-silicon-valley-read-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -651,65 +703,6 @@
 
 
   
-    <article id="post-20150714-mme-v1.2.0-dev-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/">MME_v1.2.0_开发个人总结</a>
-    </h1>
-  
-
-        <a href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/" class="archive-article-date">
-  	<time datetime="2015-07-14T02:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-13</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="界面布局"><a href="#界面布局" class="headerlink" title="界面布局"></a>界面布局</h2><h3 id="重叠View导致button点击失效的处理方案"><a href="#重叠View导致button点击失效的处理方案" class="headerlink" title="重叠View导致button点击失效的处理方案"></a>重叠View导致button点击失效的处理方案</h3><p>调整相机参数的几个功能是由最左边的“option button”来点击触发的，触发之后，会有一个“match_parent”的黑色半透明view，刚开始采用的是RelativeLayout，这样就会造成button和下面的view重叠，导致button点击事件失效。在回忆了当时学习Android Layout方面的知识之后，并且用eclipse的monitor解析了一个类似界面的app的布局，意识到这个问题可以用FrameLayout来实现，因为FrameLayout默认的排版就是将view按照添加的先后顺序堆在屏幕的左上角。<br>需要注意的是：FrameLayout只支持下面三种方式来调整排版的位置：</p>
-<ul>
-<li><strong>layout_gravity</strong></li>
-<li><strong>layout_marginXXX</strong></li>
-<li><strong>layout_paddingXXX</strong></li>
-</ul>
-<p><img src="http://ww2.sinaimg.cn/bmiddle/84460b13jw1eu28ba3yrxj20u004c74o.jpg" alt="触发前"></p>
-<p><img src="http://ww3.sinaimg.cn/bmiddle/84460b13jw1eu28baj74oj20u004daad.jpg" alt="触发后"></p>
-        
-          <a class="article-more-a" href="/2015/07/13/20150714-mme-v1.2.0-dev-summary/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -768,19 +761,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">杂文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">科技</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">实用技能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -801,6 +790,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Data Structures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">实用技能</a>
               </li>
             
             <div class="clearfix"></div>
